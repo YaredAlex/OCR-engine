@@ -1,0 +1,133 @@
+2025-12-25 10:50:26.143 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
+2025-12-25 10:50:26.180 | ERROR    | __main__:run_single_document:31 - Single document processing failed: PaddleOCR.predict() got an unexpected keyword argument 'cls'
+Traceback (most recent call last):
+
+  File "D:\LMIS\OCR\OCR_v1\app\main.py", line 83, in <module>
+    main()
+    └ <function main at 0x0000028EA89AC2C0>
+
+  File "D:\LMIS\OCR\OCR_v1\app\main.py", line 73, in main
+    run_single_document(args.file)
+    │                   │    └ 'sample.jpg'
+    │                   └ Namespace(mode='single', file='sample.jpg')
+    └ <function run_single_document at 0x0000028E86621C60>
+
+> File "D:\LMIS\OCR\OCR_v1\app\main.py", line 28, in run_single_document
+    process_file(os.path.basename(file_path), single_path=file_path)
+    │            │  │    │        │                       └ 'sample.jpg'
+    │            │  │    │        └ 'sample.jpg'
+    │            │  │    └ <function basename at 0x0000028E83F0D300>
+    │            │  └ <module 'ntpath' (frozen)>
+    │            └ <module 'os' (frozen)>
+    └ <function process_file at 0x0000028E866231A0>
+
+  File "D:\LMIS\OCR\OCR_v1\app\batch_processor.py", line 18, in process_file
+    text = extract_text(clean_img)
+           │            └ 'sample_clean.jpg'
+           └ <function extract_text at 0x0000028EA1017B00>
+
+  File "D:\LMIS\OCR\OCR_v1\app\ocr\engine.py", line 9, in extract_text
+    result = ocr.ocr(image_path, cls=True)
+             │   │   └ 'sample_clean.jpg'
+             │   └ <function PaddleOCR.ocr at 0x0000028EA0FF2E80>
+             └ <paddleocr._pipelines.ocr.PaddleOCR object at 0x0000028E872C2F50>
+
+  File "D:\LMIS\OCR\env\Lib\site-packages\typing_extensions.py", line 3004, in wrapper
+    return arg(*args, **kwargs)
+           │    │       └ {'cls': True}
+           │    └ (<paddleocr._pipelines.ocr.PaddleOCR object at 0x0000028E872C2F50>, 'sample_clean.jpg')
+           └ <function PaddleOCR.ocr at 0x0000028EA0FF2DE0>
+  File "D:\LMIS\OCR\env\Lib\site-packages\paddleocr\_pipelines\ocr.py", line 231, in ocr
+    return self.predict(img, **kwargs)
+           │    │       │      └ {'cls': True}
+           │    │       └ 'sample_clean.jpg'
+           │    └ <function PaddleOCR.predict at 0x0000028EA0FF2D40>
+           └ <paddleocr._pipelines.ocr.PaddleOCR object at 0x0000028E872C2F50>
+
+TypeError: PaddleOCR.predict() got an unexpected keyword argument 'cls'
+2025-12-25 10:52:23.496 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
+2025-12-25 10:52:56.231 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
+2025-12-25 10:54:19.310 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
+2025-12-25 10:54:41.344 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
+2025-12-25 10:57:25.072 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
+2025-12-25 10:57:48.578 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
+2025-12-25 11:04:06.309 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
+2025-12-25 11:04:24.957 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
+2025-12-25 11:05:58.081 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
+2025-12-25 11:06:11.998 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
+2025-12-25 11:10:38.820 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
+2025-12-25 11:10:51.086 | ERROR    | __main__:run_single_document:31 - Single document processing failed: 1
+Traceback (most recent call last):
+
+  File "D:\LMIS\OCR\OCR_v1\app\main.py", line 83, in <module>
+    main()
+    └ <function main at 0x00000269DA7AC2C0>
+
+  File "D:\LMIS\OCR\OCR_v1\app\main.py", line 73, in main
+    run_single_document(args.file)
+    │                   │    └ 'sample.jpg'
+    │                   └ Namespace(mode='single', file='sample.jpg')
+    └ <function run_single_document at 0x00000269B82D1C60>
+
+> File "D:\LMIS\OCR\OCR_v1\app\main.py", line 28, in run_single_document
+    process_file(os.path.basename(file_path), single_path=file_path)
+    │            │  │    │        │                       └ 'sample.jpg'
+    │            │  │    │        └ 'sample.jpg'
+    │            │  │    └ <function basename at 0x00000269B5C7D300>
+    │            │  └ <module 'ntpath' (frozen)>
+    │            └ <module 'os' (frozen)>
+    └ <function process_file at 0x00000269B82D31A0>
+
+  File "D:\LMIS\OCR\OCR_v1\app\batch_processor.py", line 18, in process_file
+    text = extract_text(clean_img)
+           │            └ 'sample_clean.jpg'
+           └ <function extract_text at 0x00000269D2E17B00>
+
+  File "D:\LMIS\OCR\OCR_v1\app\ocr\engine.py", line 13, in extract_text
+    lines.append(line[1][0])
+    │     │      └ {'input_path': 'sample_clean.jpg', 'page_index': None, 'doc_preprocessor_res': {'input_path': None, 'page_index': None, 'inpu...
+    │     └ <method 'append' of 'list' objects>
+    └ []
+
+KeyError: 1
+2025-12-25 11:11:03.722 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
+2025-12-25 11:14:13.535 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
+2025-12-25 11:22:17.294 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
+2025-12-25 11:22:41.094 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
+2025-12-25 11:25:35.783 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
+2025-12-25 11:26:24.885 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
+2025-12-25 11:26:58.160 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
+2025-12-25 11:32:33.055 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
+2025-12-25 11:33:14.927 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
+2025-12-25 12:06:47.506 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2025-12-25 12:06:47.507 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2025-12-25 12:07:54.568 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2025-12-25 12:07:54.568 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2025-12-25 12:07:54.571 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2025-12-25 12:17:41.822 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2025-12-25 12:17:41.824 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2025-12-25 12:17:41.829 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2025-12-25 12:22:24.188 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2025-12-25 12:22:24.188 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2025-12-25 12:29:08.684 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2025-12-25 12:29:08.688 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2025-12-29 16:40:45.364 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2025-12-29 16:40:45.372 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2025-12-29 16:43:06.934 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2025-12-29 16:43:06.937 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2025-12-29 16:43:56.011 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2025-12-29 16:43:56.015 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2025-12-29 17:21:32.517 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2025-12-29 17:21:32.518 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2025-12-30 11:41:58.750 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2025-12-30 11:41:58.750 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2025-12-30 11:51:59.208 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2025-12-30 11:51:59.211 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2025-12-30 12:00:55.087 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2025-12-30 12:00:55.091 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2025-12-30 12:02:19.945 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2025-12-30 12:02:19.949 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2025-12-30 13:03:44.184 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2025-12-30 13:03:44.188 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2025-12-30 19:21:29.633 | INFO     | __main__:run_single_document:25 - Processing single document: ./slip_license.pdf
+2025-12-30 19:23:01.998 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
