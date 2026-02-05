@@ -14,7 +14,7 @@ pypdf
 python-multipart
 
 tqdm
-
+ollama
 fastapi
 uvicorn
 
