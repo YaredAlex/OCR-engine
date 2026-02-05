@@ -7,17 +7,18 @@ use_doc_orientation_classify=False,
     lang="en",
 )
 
-def extract_text(image_path: str) -> str:
-    result = ocr.predict(image_path)
+def extract_text(image_path: list[str]) -> list[str]:
+    results = ocr.predict(image_path)
     lines = []
-    for line in result:
-        # print("line,",line)
-        lines.extend(line['rec_texts'])
-        # line.print()
-        line.save_to_img("output")
-        # line.save_to_json("output")
-        print("texts are ",line['rec_texts'])
-    return "\n".join(lines)
+    for result in results:
+        for line in result:
+            # print("line,",line)
+            lines.append(line['rec_texts'])
+            # line.print()
+            line.save_to_img("output")
+            # line.save_to_json("output")
+            print("texts are ",line['rec_texts'])
+    return lines
 
 
 # from paddleocr import PPStructureV3
