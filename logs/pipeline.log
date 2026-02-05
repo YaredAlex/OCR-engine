@@ -131,3 +131,13 @@ KeyError: 1
 2025-12-30 13:03:44.188 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
 2025-12-30 19:21:29.633 | INFO     | __main__:run_single_document:25 - Processing single document: ./slip_license.pdf
 2025-12-30 19:23:01.998 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
+2026-02-05 14:20:57.518 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2026-02-05 14:20:57.551 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2026-02-05 14:32:06.017 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2026-02-05 14:32:06.033 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2026-02-05 14:32:23.174 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2026-02-05 14:32:23.196 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2026-02-05 14:34:37.173 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2026-02-05 14:34:37.190 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
+2026-02-05 14:45:06.017 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
+2026-02-05 14:45:06.017 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
