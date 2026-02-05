@@ -1,3 +1,4 @@
+from collections import defaultdict
 import os
 import json
 import tempfile
@@ -43,34 +44,51 @@ def pdf_to_images(pdf_path: str) -> List[str]:
 
     return image_paths
 
-def process_file(filename: str = None, single_path: str = None):
+def process_file(filenames: list[str] = None, single_path: str = None):
     """
+    Args:
+        filenames: list[filename]
     Process a single image or PDF file.
     Works for batch mode and API mode.
     """
-    path = single_path if single_path else os.path.join(INPUT_DIR, filename)
+    paths = [single_path] if single_path else [os.path.join(INPUT_DIR, f) for f in filenames]
 
-    if not os.path.exists(path):
-        raise FileNotFoundError(f"File not found: {path}")
+    for p in paths:
+        if not os.path.exists(p):
+            raise FileNotFoundError(f"File not found: {p}")
 
     extracted_text_parts = []
+    # different key same value
+    image_key = defaultdict(list)
+    batch_images = []
+    for path in paths:
+        if is_pdf(path):
+            image_paths = pdf_to_images(path)
 
-    if is_pdf(path):
-        image_paths = pdf_to_images(path)
+            for img_path in image_paths:
+                clean_img = preprocess_image(img_path)
+                batch_images.append(clean_img)
+                image_key[path].append(len(batch_images)-1)
 
-        for img_path in image_paths:
-            clean_img = preprocess_image(img_path)
-            text = extract_text(clean_img)
-            extracted_text_parts.append(text)
+                # text = extract_text(clean_img)
+                # extracted_text_parts.append(text)
 
-    elif is_image(path):
-        clean_img = preprocess_image(path)
-        text = extract_text(clean_img)
-        extracted_text_parts.append(text)
+        elif is_image(path):
+            clean_img = preprocess_image(path)
+            batch_images.append(clean_img)
+            image_key[path].append(len(batch_images)-1)
+            # text = extract_text(clean_img)
+            # extracted_text_parts.append(text)
 
-    else:
-        raise ValueError(f"Unsupported file type: {path}")
+        else:
+            raise ValueError(f"Unsupported file type: {path}")
 
+    #call paddle ocr batch processing
+    ocr_results = extract_text(batch_images)
+    combined_texts = defaultdict(str)
+    for img,indexs in image_key.items():
+        combined_texts[img] = f"{combined_texts[img]} {"\n".join(ocr_results[indexs])}"
+        
     # Combine text (important for PDFs)
     full_text = "\n".join(extracted_text_parts)
     doc_type = classify_document(full_text)
@@ -113,8 +131,10 @@ def run_batch():
         if is_image(f) or is_pdf(f)
     ]
 
-    with Pool(processes=8) as pool:
-        pool.map(process_file, files)
+    # with Pool(processes=8) as pool:
+    #     pool.map(process_file, files)
+    # using batch processing instead of thread pooling
+    process_file(files)
 
 
 if __name__ == "__main__":
