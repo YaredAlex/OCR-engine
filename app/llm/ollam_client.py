@@ -11,7 +11,8 @@ def call_llm(prompt: str) -> str:
         json={
             "model": MODEL,
             "prompt": prompt,
-            "stream": False
+            "stream": False,
+            "think":False,
         },
         timeout=120
     )
