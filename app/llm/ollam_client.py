@@ -11,6 +11,7 @@ client = Client(host='http://localhost:11434')
 llm_chain = OllamaLLM(
     model=MODEL, 
     temperature=0.0,
+    reasoning=True
 )
 
 # method 1 using http request 
