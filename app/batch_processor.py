@@ -51,14 +51,13 @@ def process_file(filenames: list[str] = None, single_path: str = None):
     Process a single image or PDF file.
     Works for batch mode and API mode.
     """
-    paths = [single_path] if single_path else [os.path.join(INPUT_DIR, f) for f in filenames]
+    paths = single_path if single_path else [os.path.join(INPUT_DIR, f) for f in filenames]
 
     for p in paths:
         if not os.path.exists(p):
             raise FileNotFoundError(f"File not found: {p}")
 
-    extracted_text_parts = []
-    # different key same value
+
     image_key = defaultdict(list)
     batch_images = []
     for path in paths:
@@ -82,7 +81,7 @@ def process_file(filenames: list[str] = None, single_path: str = None):
 
         else:
             raise ValueError(f"Unsupported file type: {path}")
-
+    
     #call paddle ocr batch processing
     ocr_results = extract_text(batch_images)
     # combining text
@@ -95,7 +94,6 @@ def process_file(filenames: list[str] = None, single_path: str = None):
     # doc_type = classify_document(full_text)
     doc_types = classify_documents(list(combined_texts.values()))
 
-    schema = {}
     print("doctypes is ", doc_types)
     def get_schema(doc_type):
         if doc_type in ["National ID", "Passport"]:
@@ -110,17 +108,18 @@ def process_file(filenames: list[str] = None, single_path: str = None):
     prompts = [extraction_prompt(doc_type, text, get_schema(type)) for text,doc_type in zip(combined_texts.values(),doc_types)]
     result = ollama_chain(prompts)
 
-    # debugging result
-    print(result)
+
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     output_name = os.path.basename(path) + ".json"
     output_path = os.path.join(OUTPUT_DIR, output_name)
 
+    # with open(output_path, "w", encoding="utf-8") as f:
+    #     f.write(result)
     with open(output_path, "w", encoding="utf-8") as f:
-        f.write(result)
+        json.dump(result, f, ensure_ascii=False, indent=2)
 
     try:
-        structured = json.loads(result)
+        structured = [json.loads(res) for res in result]
     except json.JSONDecodeError:
         structured = {"raw_output": result}
 
