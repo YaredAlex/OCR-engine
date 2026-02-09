@@ -70,31 +70,32 @@ def create_api():
     async def ocr_documents(files: List[UploadFile] = File(...)):
         results = []
 
-        for file in files:
-            temp_name = f"{uuid.uuid4()}_{file.filename}"
-            temp_path = f"data/input/{temp_name}"
-
-            try:
+        temp_names = [f"{uuid.uuid4()}_{file.filename}" for file in files]
+        temp_paths = [f"data/input/{temp_name}" for temp_name in temp_names]
+        try:
+            for file,temp_path in zip(files,temp_paths):
                 with open(temp_path, "wb") as buffer:
-                    shutil.copyfileobj(file.file, buffer)
+                        shutil.copyfileobj(file.file, buffer)
 
-                result = process_file(file.filename,temp_path)
+            result = process_file([file.filename for file in files],temp_paths)
+            print("create api main result ",result)
+            # res.data contains extracted and structed info
+            for data,file in zip(result['data'],files):
                 results.append({
                     "file": file.filename,
                     "success": True,
-                    "result": result
+                    "result": data
                 })
-
-            except Exception as e:
-                results.append({
+        except Exception as e:
+            results.append({
                     "file": file.filename,
                     "success": False,
                     "error": str(e)
                 })
 
-            finally:
-                if os.path.exists(temp_path):
-                    os.remove(temp_path)
+        finally:
+            if os.path.exists(temp_path):
+                os.remove(temp_path)
 
         return {"results": results}
 
