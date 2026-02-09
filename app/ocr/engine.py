@@ -11,47 +11,9 @@ def extract_text(image_path: list[str]) -> list[str]:
     results = ocr.predict(image_path)
     lines = []
     for result in results:
-        for line in result:
-            # print("line,",line)
-            lines.append(line['rec_texts'])
-            # line.print()
-            line.save_to_img("output")
-            # line.save_to_json("output")
-            print("texts are ",line['rec_texts'])
+        lines.append(result['rec_texts'])
+        result.save_to_img("output")
+        # line.save_to_json("output")
     return lines
 
 
-# from paddleocr import PPStructureV3
-
-# # Initialize layout engine
-# layout_engine = PPStructureV3()
-
-# def extract_layout(image_path: str):
-#     """
-#     Extract document layout and structured content
-#     """
-#     result = layout_engine(image_path)
-
-#     structured_output = []
-
-#     for block in result:
-#         block_type = block["type"]   # text / title / table / figure
-#         bbox = block["bbox"]
-
-#         entry = {
-#             "type": block_type,
-#             "bbox": bbox,
-#             "text": None,
-#             "html": None
-#         }
-
-#         if block_type in ["text", "title"]:
-#             entry["text"] = block["res"]
-
-#         if block_type == "table":
-#             entry["html"] = block["res"]["html"]
-#         block.save_to_img("output")
-#         print(block)
-#         structured_output.append(entry)
-
-#     return structured_output
