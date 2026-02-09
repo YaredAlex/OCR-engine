@@ -6,10 +6,10 @@ from multiprocessing import Pool
 from typing import List
 from pdf2image import convert_from_path
 from PIL import Image
-from llm.ollam_client import call_llm
+from llm.ollam_client import call_llm, ollama_chain
 from ocr.engine import extract_text
 from ocr.preprocess import preprocess_image
-from document.classifier import classify_document
+from document.classifier import classify_documents
 from llm.prompts import extraction_prompt
 from document.schemas import BUSINESS_LICENSE, ID_SCHEMA, LICENSE_COMPITENCY
 
@@ -85,27 +85,33 @@ def process_file(filenames: list[str] = None, single_path: str = None):
 
     #call paddle ocr batch processing
     ocr_results = extract_text(batch_images)
+    # combining text
     combined_texts = defaultdict(str)
     for img,indexs in image_key.items():
-        combined_texts[img] = f"{combined_texts[img]} {"\n".join(ocr_results[indexs])}"
-        
-    # Combine text (important for PDFs)
-    full_text = "\n".join(extracted_text_parts)
-    doc_type = classify_document(full_text)
+        combined_texts[img] ="".join(["\n".join(ocr_results[indice]) for indice in indexs])
+
+    # full_text = "\n".join(extracted_text_parts)
+    # classify each documents
+    # doc_type = classify_document(full_text)
+    doc_types = classify_documents(list(combined_texts.values()))
 
     schema = {}
-    print("doctype is ", doc_type)
-    if doc_type in ["National ID", "Passport"]:
-        schema = ID_SCHEMA
-    if doc_type in ["License compitency"]:
-        schema = LICENSE_COMPITENCY
-    if doc_type in ["Commercial registration"]:
-        schema = BUSINESS_LICENSE
+    print("doctypes is ", doc_types)
+    def get_schema(doc_type):
+        if doc_type in ["National ID", "Passport"]:
+            return ID_SCHEMA
+        if doc_type in ["License compitency"]:
+            return LICENSE_COMPITENCY
+        if doc_type in ["Commercial registration"]:
+            return BUSINESS_LICENSE
+        return {}
         
-    prompt = extraction_prompt(doc_type, full_text, schema)
-    result = call_llm(prompt)
+    # batch processing documents 
+    prompts = [extraction_prompt(doc_type, text, get_schema(type)) for text,doc_type in zip(combined_texts.values(),doc_types)]
+    result = ollama_chain(prompts)
 
-
+    # debugging result
+    print(result)
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     output_name = os.path.basename(path) + ".json"
     output_path = os.path.join(OUTPUT_DIR, output_name)
@@ -119,8 +125,8 @@ def process_file(filenames: list[str] = None, single_path: str = None):
         structured = {"raw_output": result}
 
     return {
-        "file": os.path.basename(path),
-        "document_type": doc_type,
+        "files": [os.path.basename(path) for path in combined_texts.keys()],
+        "document_types": doc_types,
         "data": structured
     }
 
