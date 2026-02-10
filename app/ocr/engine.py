@@ -12,6 +12,7 @@ def extract_text(image_path: list[str]) -> list[str]:
     lines = []
     for result in results:
         lines.append(result['rec_texts'])
+        print("extracted text is ",result['rec_texts'])
         result.save_to_img("output")
         # line.save_to_json("output")
     return lines
