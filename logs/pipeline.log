@@ -192,3 +192,10 @@ KeyError: 1
 2026-02-09 11:56:19.176 | INFO     | __main__:run_api_mode:136 - Starting API server at http://0.0.0.0:8000
 2026-02-09 11:59:14.294 | INFO     | __main__:main:173 - Pipeline started in 'api' mode
 2026-02-09 11:59:14.294 | INFO     | __main__:run_api_mode:136 - Starting API server at http://0.0.0.0:8000
+2026-02-09 16:07:27.706 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-09 16:07:27.706 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-09 16:07:27.708 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-10 14:12:32.743 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-10 14:12:32.743 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-10 14:20:34.533 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-10 14:20:34.533 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
