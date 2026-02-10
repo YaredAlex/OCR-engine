@@ -1,0 +1,12 @@
+FROM python:3.11
+
+WORKDIR /app
+
+COPY requirement.txt .
+
+RUN pip install -r requirements.txt --no-cache-dir
+
+COPY . . 
+# exposing port 8000
+EXPOSE 8000
+CMD ["python", "app/_main.py","--mode=api","--port=8000"]
