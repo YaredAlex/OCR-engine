@@ -8,7 +8,7 @@ langchain-community
 langchain-ollama
 
 paddlepaddle-gpu==3.2.0 -i https://www.paddlepaddle.org.cn/packages/stable/cu126/
-paddleocr
+paddleocr[doc-parser] @ git+https://github.com/PaddlePaddle/PaddleOCR.git
 opencv-python
 Pillow
 numpy
