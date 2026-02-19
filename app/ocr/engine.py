@@ -8,8 +8,9 @@ use_doc_orientation_classify=False,
 )
 # pp_ocr = PPStructureV3(device="GPU",
 # use_doc_orientation_classify=False,
-#     use_doc_unwarping=False,)
-
+#     use_doc_unwarping=False,
+#     use_table_recognition=True,
+#     )
 
 def extract_text(image_path: list[str]) -> list[str]:
     results = ocr.predict(image_path)
@@ -41,7 +42,6 @@ def extract_text(image_path: list[str]) -> list[str]:
 #             for path, image in item.items():
 #                 file_path = output_path / path
 #                 file_path.parent.mkdir(parents=True, exist_ok=True)
-#                 print("image saveed to markdown image",file_path.absolute())
 #                 image.save(file_path)
 #     return lines
 
