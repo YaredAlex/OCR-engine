@@ -92,36 +92,36 @@ def process_file(filenames: list[str] = None, single_path: str = None):
     # full_text = "\n".join(extracted_text_parts)
     # classify each documents
     # doc_type = classify_document(full_text)
-    doc_types = classify_documents(list(combined_texts.values()))
+    doc_types:list[str] = classify_documents(list(combined_texts.values()))
 
     print("doctypes is ", doc_types)
-    def get_schema(doc_type):
-        if doc_type in ["National ID", "Passport"]:
+    def get_schema(doc_type:str):
+        if doc_type.lower() in ["national id", "passport","visa"]:
             return ID_SCHEMA
-        if doc_type in ["License compitency"]:
+        if doc_type.lower() in ["license compitency"]:
             return LICENSE_COMPITENCY
-        if doc_type in ["Commercial registration"]:
+        if doc_type.lower() in ["commercial registration"]:
             return BUSINESS_LICENSE
         return {}
         
     # batch processing documents 
-    prompts = [extraction_prompt(doc_type, text, get_schema(type)) for text,doc_type in zip(combined_texts.values(),doc_types)]
-    result = ollama_chain(prompts)
+    prompts = [extraction_prompt(doc_type, text, get_schema(doc_type)) for text,doc_type in zip(combined_texts.values(),doc_types)]
+    results = ollama_chain(prompts)
 
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     output_name = os.path.basename(path) + ".json"
     output_path = os.path.join(OUTPUT_DIR, output_name)
 
-    # with open(output_path, "w", encoding="utf-8") as f:
-    #     f.write(result)
+    # removing ```json ``` from the generated text
+    results = [result.replace("```json","").replace("```","") for result in results]
     with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(result, f, ensure_ascii=False, indent=2)
+        json.dump(results, f, ensure_ascii=False, indent=2)
 
     try:
-        structured = [json.loads(res) for res in result]
+        structured = [json.loads(res) for res in results]
     except json.JSONDecodeError:
-        structured = {"raw_output": result}
+        structured = [res for res in results]
 
     return {
         "files": [os.path.basename(path) for path in combined_texts.keys()],
