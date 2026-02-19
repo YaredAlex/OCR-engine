@@ -28,15 +28,18 @@ def classify_documents(ocr_texts: list[str]) -> list[str]:
     
     prompt = lambda x: f"""
 You are a document classification system.
+** Think Carefully before classifying the documents
 
 Classify the document into one of:
 - National ID
+- Visa
 - Passport
 - Driver License
 - Invoice
 - Bank Statement
 - License compitency
 - Commercial registration
+- Table Containing Document
 - Unknown
 
 Text:
