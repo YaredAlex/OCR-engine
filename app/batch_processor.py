@@ -93,17 +93,18 @@ def process_file(filenames: list[str] = None, single_path: str = None):
     # classify each documents
     # doc_type = classify_document(full_text)
     doc_types:list[str] = classify_documents(list(combined_texts.values()))
-
+     # the llm some times ends with \n
+    doc_types = [doc_type.replace("\n","") for doc_type in doc_types]
     print("doctypes is ", doc_types)
     def get_schema(doc_type:str):
-        if doc_type.lower() in ["national id", "passport","visa"]:
+        doc_type = doc_type.lower()
+        if doc_type in ["national id", "passport","visa"]:
             return ID_SCHEMA
-        if doc_type.lower() in ["license compitency"]:
+        if doc_type in ["license compitency"]:
             return LICENSE_COMPITENCY
-        if doc_type.lower() in ["commercial registration"]:
+        if doc_type in ["commercial registration"]:
             return BUSINESS_LICENSE
         return {}
-        
     # batch processing documents 
     prompts = [extraction_prompt(doc_type, text, get_schema(doc_type)) for text,doc_type in zip(combined_texts.values(),doc_types)]
     results = ollama_chain(prompts)
