@@ -49,6 +49,34 @@ VISA_SCHEMA = {
   "mrz_line_2": ""
 }
 
+SUPPORT_LETTER_SCHEMA = {
+  "letter_reference_number": "",
+  "letter_date": "",
+  "issuing_organization": "",
+  "issuing_department": "",
+  "recipient_organization": "",
+  "recipient_location": "",
+  "project_title": "",
+  "project_reference": "",
+  "purpose": "",
+  "contracting_company": "",
+  "consultant_company": "",
+  "employees": [
+    {
+      "serial_number": "",
+      "full_name": "",
+      "passport_number": "",
+      "position": ""
+    },
+  ],
+  "signatory_name": "",
+  "signatory_title": "",
+  "contact_address": "",
+  "contact_phone": "",
+  "contact_website": "",
+  "attachments": ""
+}
+
 
 BUSINESS_LICENSE = {
     "tin":"",
