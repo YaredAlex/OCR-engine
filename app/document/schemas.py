@@ -7,6 +7,24 @@ ID_SCHEMA = {
     "issue_date": "",
     "expiry_date": ""
 }
+PASSPORT_SCHEMA = {
+  "document_type": "",
+  "passport_number": "",
+  "country_code": "",
+  "issuing_country": "",
+  "full_name": "",
+  "surname": "",
+  "given_names": "",
+  "date_of_birth": "",
+  "gender": "",
+  "nationality": "",
+  "place_of_birth": "",
+  "issue_date": "",
+  "expiry_date": "",
+  "place_of_issue": "",
+  "mrz_line_1": "",
+  "mrz_line_2": ""
+}
 
 BUSINESS_LICENSE = {
     "tin":"",
