@@ -127,6 +127,30 @@ CONTRACT_SCHEMA = {
     "contract_signed_date":"" 
   }
 }
+EXPERIANCE_SCHEMA = {
+  "organization": {
+    "name": "",
+    "address": "",
+    "contact": {
+      "phone": "",
+      "email": ""
+    },
+    "reference_number": "",
+    "issue_date": ""
+  },
+  "employee": {
+    "full_name": "",
+    "role": "",
+    "start_date": "",
+    "end_date": "",
+    "currently_employed": ""
+  },
+  "performance_summary": "",
+  "authorized_signatory": {
+    "name": "",
+    "designation": ""
+  }
+}
 
 BUSINESS_LICENSE = {
     "tin":"",
