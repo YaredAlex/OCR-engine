@@ -77,6 +77,56 @@ SUPPORT_LETTER_SCHEMA = {
   "attachments": ""
 }
 
+CONTRACT_SCHEMA = {
+  "contract_type": "",
+  "employer": {
+    "company_name": "",
+    "branch":"",
+    "address": "",
+    "representative_name":"",
+    "representative_title":"" 
+  },
+
+  "employee": {
+    "full_name": "",
+    "address":"",
+    "phone":"",
+    "nationality": "",
+    "passport_number": "",
+    "date_of_birth": ""
+  },
+
+  "employment_details": {
+    "job_title": "",
+    "employment_type": "",
+    "place_of_work": "",
+    "start_date":"",
+    "end_date":"",
+    "contract_duration":"",
+    "probation_period": ""
+  },
+
+  "compensation": {
+    "basic_salary": "",
+    "currency": "",
+    "allowances": "",
+    "payment_frequency": ""
+  },
+
+  "termination": {
+    "notice_period": "",
+    "early_termination_conditions": ""
+  },
+
+  "governing_law": "",
+  "jurisdiction":"",
+
+  "signatures": {
+    "employer_signatory": "",
+    "employee_signatory": "",
+    "contract_signed_date":"" 
+  }
+}
 
 BUSINESS_LICENSE = {
     "tin":"",
