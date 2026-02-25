@@ -398,3 +398,126 @@ office to cancel the', 'Work Permit of Mr. AGNES OYELLA.', 'Thank you and your u
     {text}
     """
     return CLEARANCE_LETTER_PROMPT
+
+def delegation_letter_prompt(doc_type: str, text: str, schema: dict):
+    DELEGATION_LETTER_PROMPT = f"""
+    You are an information extraction system.
+
+    Extract only the following fields from the provided identity document text.
+
+    Document type: {doc_type}
+
+    Extract the information and return STRICT JSON NO ADDITIONAL fields.
+    following this schema:
+    {schema}
+
+
+    Return STRICT JSON only.
+    - Do NOT add extra fields.
+    - Do NOT add metadata.
+    - Do NOT nest the response.
+    - Do NOT include explanations.
+    - Do NOT include markdown formatting.
+    - Do NOT include text before or after the JSON.
+    - If a field is missing, return an empty string "".
+    - The output must match EXACTLY this schema structure.
+    - Do not start with new line or \n
+    - Start with {{}} 
+
+    Example 
+    Input:
+    "'title', 'hitp://10.1.7.17/DARIS/Representation/FullGeneralRepresentatior', 'Doc No: B11/0014006/1/2017', 'Date: 1/24/2025', '4451239', 'Federal Document Authentication and Registration Service', 'Addis Ababa', 'Adminstrative Power of Attorney', 'Principal : I Mr/ Agada Andrew On behalf of Dunamis interanational Gospel Center GM Nationality/', 'Nigerian', 'Address : Addis Ababa Sub City :lmikura Woreda: 8House No :new PassPoret No A12657503', 'Agent:-1', 'Mss. Hawi Marekos Terfa Nationality/Ethiopian/', 'Address : Addis Ababa Sub City : Yeka Woreda: 11House No :new', 'I the principal authorize the agent to act on my behalf To enter into a lease agreement To renew the', 'contract to cancel the contract The agent is authorized to act and perform the following activities on behalf of', 'the principal to represent the principal at the federal offices, ministry of labor and social affairs, immigration', 'office, sub city offices Kebele offices and all government offices. The agent is also given power to process,', 'pay and receive residence ID, Visa, work permit for expatriates, foreign visitors on behalf of the principal', 'registered Property. To manage, to preserve and supervise, To pay any kind of payment, To terminate/revoke a', 'contract , To appoint advocate and litigate at any court and(or) at any body of justice , To give and receive', 'any form of DocumentsI witness where of I have subscribed my signature in accordance with Article 2199', 'and 2203 of the Ethiopian Civil Code.', "Principal's Name and Signature", 'NameA....p', 'PN 9227 9H MA7A', 'P/11 /0 X', 'Signature.....', 'L6To NXM* &Cno LCq9A;', 'cB11/00/4006/1/2017', '1/24/2025', '10750', '7L', 'VE', '+n4f', 'Fov', '0077n', 'reg sn', '9', 'Moo8/IV', 'Pris', 'incroal', 'P35 NC AC: MhA', 'PaU', '1 of 1', '1/24/2025, 2:29'
+  'DUNAMIS INTERNATIONAL GOSPEL CENTER ETHOPIA', 'DUNAMIS', 'Id no DIGCE/addis/0001/25/PA', '7f', 'Name :-Hawi Markos Terfa', 'AS', 'NUO', 'ADVENI', 'Isuued date:- 01/01/25', 'IMMER', '**', '×', 'Expired date;- 01/01/30', 'Center', 'Ethiop'
+ 'TCOZSSTCEMALEBEUHONIV', '', '0900434588', 'DUN', 'Gonbi', '*', 'Fomsh', 'n011269', 'es1t012091ahhsnu2', 'Exbpeq9are-011or13'
+  '*', 'PATrACe', 'f6∞+8', 'Ethiopian Digital ID Card', 'National ID', '2024/Dec/26', 'Mn9IFull', 'Name', 'on', '9C8n +C4', 'Hawi Markos', 'Terfa', '+mn+2017/04/17 Date of Issue', 'P  | Date of Birth', '23/02/1982|', '1989/Nov/02', '25| Sex', 'nt', '| Female', '400', 'pn+ ? | Date of Expiry', '2025/04/17', '2032/Dec/26', 'nce', '4915071687513620', '$mC', 'FAN'
+  'nAh |Phone', 'Number', '0911057452', '4169', 'Nationality', '(n+)A&MMnc+|Self Declared)', 'X+PAS', '|Ethiopian', 'X|Address', 'UUYYOY', 'Addis 
+Ababa', 'ph', 'Yeka', 'M11', 'Woreda 11', '48e', 'FIN784532651946', 'AROTC', 'BU D M nX 7M M D-SCh= A 9779 E Mi.t/arpnt=', 'SN:', '7165010', 'If lost and found, please return to nearby police station or to the institution. Call 9779 or visit id.et/cardprint for more.'",
+    Output:
+    {{
+  "document_type": "administrative_power_of_attorney",
+  "document_metadata": {
+    "document_number": "B11/0014006/1/2017",
+    "registration_number": "4451239",
+    "date_of_issue": "2025-01-24",
+    "issuing_authority": "Federal Document Authentication and Registration Service",
+    "place_of_issue": "Addis Ababa"
+  },
+  "principal": {
+    "full_name": "Agada Andrew",
+    "represented_organization": "Dunamis International Gospel Center",
+    "nationality": "Nigerian",
+    "passport_number": "A12657503",
+    "address": {
+      "city": "Addis Ababa",
+      "sub_city": "Lemi Kura",
+      "woreda": "8",
+      "house_number": "new"
+    }
+  },
+  "agent": {
+    "full_name": "Hawi Marekos Terfa",
+    "nationality": "Ethiopian",
+    "id_type": "Ethiopian Digital ID",
+    "id_number": "4915071687513620",
+    "date_of_birth": "1982-02-23",
+    "gender": "Female",
+    "phone_number": "0911057452",
+    "address": {
+      "city": "Addis Ababa",
+      "sub_city": "Yeka",
+      "woreda": "11",
+      "house_number": "new"
+    }
+  },
+  "authorization": {
+    "authorization_type": "general_administrative_power",
+    "authorized_actions": [
+      "enter_lease_agreement",
+      "renew_contract",
+      "cancel_contract",
+      "represent_before_government_offices",
+      "process_visa",
+      "process_work_permit",
+      "process_residence_id",
+      "make_and_receive_payments",
+      "appoint_advocate",
+      "litigate_in_court",
+      "manage_registered_property",
+      "receive_and_submit_documents"
+    ],
+    "applicable_institutions": [
+      "Federal Offices",
+      "Ministry of Labor and Social Affairs",
+      "Immigration Office",
+      "Sub City Offices",
+      "Kebele Offices",
+      "Courts"
+    ]
+  },
+  "legal_basis": {
+    "civil_code_articles": [
+      "Article 2199",
+      "Article 2203"
+    ]
+  },
+  "validity": {
+    "effective_date": "2025-01-24",
+    "expiry_date": null,
+    "revocation_allowed": true
+  },
+  "signatures": {
+    "principal_signed": true,
+    "agent_signed": null,
+    "witnessed": true
+  },
+  "supporting_documents": {
+    "agent_id_attached": true,
+    "principal_passport_attached": true
+  }
+}}
+
+
+    Now extract the information from the following text:
+    {text}
+    """
+    return DELEGATION_LETTER_PROMPT
