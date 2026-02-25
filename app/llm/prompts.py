@@ -120,9 +120,9 @@ def visa_prompt(doc_type: str, text: str, schema: dict):
     Example 
     Input:
     " 'ICS', 'P26377A7', 'IMMIGRATION AND CITIZENSHIP SERVICE', 'e-Visa', 'ToV3563468_JCeH5752', 'First/Given Name :', 'Ranvijay', 'SurName :', 'Singh', 'Nationality:', 'India', 'Date of Birth :', '02 Jan 1984', 'Birth Place:', 'Gonda, Uttar Pradesh', 'Travel Document :', 'Ordinary Passport/Z68127445', 'Travel Doc. Issue Date :', '28 Nov 2022', 
-'Travel Doc. Expiry Date:', '27 Nov 2032', 'Valid From :', '27 Sep 2023', 'Valid Until :', '27 Oct 2023', 'Visa Validity Type :', 'Tourist Visa Single Entry 30 Days', 'Reference code :', 'JCeH5752', 'Note: On your arrival at Addis Ababa Bole International Airport Immigration counter,', "please go directly to the counter that's dedicated for e-Visa holders. Don't line up", 'with the travelers applying for on-arrival visa', 'ENJOY YOUR VISIT AND LEAVE BEFORE YOUR VISA EXPIRES SO THAT WE CAN WELCOME YOU AGAIN!', 'Immigration and Citizenship services', 'Addis Ababa, Ethiopia', 'Pλ.7P*8619', 'SMUX', 'EqhA&TMA.h', 'Federal Democratic', 'Republic of Ethiopia', 'Ptàm 7/Date of Issue', 'A7Aa: P7.90n 47/Date ofExpiry', '10 OCT 23', '09 NOV 
-23', 'Ptamnt n-/Place of Issue', 'Pn.n %ert/ Visa Type', 'MDINA', 'W', 'P. dTC/Visa Number', 'V', 'Pa0.  / No. Entries', 'VS5241245', 'S', 'Ph, n/Surname', 'hg hihn/ Given Name', 'SINGH', 'RANVIJAY', '9/Sex', 'Po/Date of Birth', 'H.777/Nationality', 'M', '02 JAN 84', 'IND', 'P.T. TC/Passport Number', 'h-d.o- Pg3 / No. of Applicants', 'Z6812712', '1', 'P4 .C 
-/Authorized Signature', 'Ppf', 'VS5241245', 'VWEHSINGH<GANVIAY<<<<<<<<<<<<', 'Z6812712<4IND8401027M231109052476073', '3', 'VSISIMSSA'",
+    'Travel Doc. Expiry Date:', '27 Nov 2032', 'Valid From :', '27 Sep 2023', 'Valid Until :', '27 Oct 2023', 'Visa Validity Type :', 'Tourist Visa Single Entry 30 Days', 'Reference code :', 'JCeH5752', 'Note: On your arrival at Addis Ababa Bole International Airport Immigration counter,', "please go directly to the counter that's dedicated for e-Visa holders. Don't line up", 'with the travelers applying for on-arrival visa', 'ENJOY YOUR VISIT AND LEAVE BEFORE YOUR VISA EXPIRES SO THAT WE CAN WELCOME YOU AGAIN!', 'Immigration and Citizenship services', 'Addis Ababa, Ethiopia', 'Pλ.7P*8619', 'SMUX', 'EqhA&TMA.h', 'Federal Democratic', 'Republic of Ethiopia', 'Ptàm 7/Date of Issue', 'A7Aa: P7.90n 47/Date ofExpiry', '10 OCT 23', '09 NOV 
+    23', 'Ptamnt n-/Place of Issue', 'Pn.n %ert/ Visa Type', 'MDINA', 'W', 'P. dTC/Visa Number', 'V', 'Pa0.  / No. Entries', 'VS5241245', 'S', 'Ph, n/Surname', 'hg hihn/ Given Name', 'SINGH', 'RANVIJAY', '9/Sex', 'Po/Date of Birth', 'H.777/Nationality', 'M', '02 JAN 84', 'IND', 'P.T. TC/Passport Number', 'h-d.o- Pg3 / No. of Applicants', 'Z6812712', '1', 'P4 .C 
+    /Authorized Signature', 'Ppf', 'VS5241245', 'VWEHSINGH<GANVIAY<<<<<<<<<<<<', 'Z6812712<4IND8401027M231109052476073', '3', 'VSISIMSSA'",
     Output:
     {{
   "visa_number": "VS5241245",
@@ -152,3 +152,79 @@ def visa_prompt(doc_type: str, text: str, schema: dict):
     {text}
     """
     return VISA_PROMT
+
+def support_letter_prompt(doc_type: str, text: str, schema: dict):
+    SUPPORT_LETTER_PROMPT = f"""
+    You are an information extraction system.
+
+    Extract only the following fields from the provided identity document text.
+
+    Document type: {doc_type}
+
+    Extract the information and return STRICT JSON NO ADDITIONAL fields.
+    following this schema:
+    {schema}
+
+
+    Return STRICT JSON only.
+    - Do NOT add extra fields.
+    - Do NOT add metadata.
+    - Do NOT nest the response.
+    - Do NOT include explanations.
+    - Do NOT include markdown formatting.
+    - Do NOT include text before or after the JSON.
+    - If a field is missing, return an empty string "".
+    - The output must match EXACTLY this schema structure.
+    - Do not start with new line or \n
+    - Start with {{}} 
+
+    Example 
+    Input:
+    " 'A STAR ALLIANCE MEMBER', 'Ethiopian', 'PhTPAS', 'The New Spirit Of Africa', 'Ref: EAL/GIPD/1905/24', 'Date: December 27, 2024', 'FDRE, Ministry of Labour and Skills', 'Addis Ababa', 'Ref: Design-Build, Financing and Commissioning of Ethiopian Airlines Group', 'Employees Housing Phase II Lot-II Construction Project', 'Request to Get a Work Permit', 'Ethiopian Airlines Group has entered into a Contract Agreement with Dar Al-Handasah', 'Consultants (Shair and Partners) 
+for the consultancy service of the subject project.', "Following the Contractor's request, the Employer's representative requested us, through", 'its letter dated December 24, 2024, with Ref. No. ET23222-0200S/E/442-24 to issue a', "supporting letter for the issuance of work permit for the underlisted contractors' staffs.", "Thus, we kindly request the Ministry to assist the underlisted contractor's staffs to get", 'work permit and stay in Ethiopia for the project duration.', 'No.', 'Name', 'Passport No.', 'Position/Professional', '1', 'Edwin Alex', 'W 1393123', 'Project Engineer', '2', 'Saravana Muthu', 'X 3331123', 'Supervisor', '3', 'Prabu Pillappan', 'P 3453123', 'Technician', 'Your cooperation is highly appreciated.', 'Sincerely,', 'RPC', 'ony', 'Abraham Tesfaye', 'AENWOLN', 'Director Group Infrastructure', 'Planning & development', 'AG/mw', 'Encl: 3-pages passport copy', 'Bole International Airport, P.O.Box 1755, Addis Ababa, Ethiopia Tel: (251-011) 617 9900, Hotline Number 6787,', 'Fax: (251-011) 661 1474', 'www.ethiopianairlines.com'",
+    Output:
+    {{
+  "letter_reference_number": "EAL/GIPD/1905/24",
+  "letter_date": "27 December 2024",
+  "issuing_organization": "Ethiopian Airlines Group",
+  "issuing_department": "Group Infrastructure Planning & Development",
+  "recipient_organization": "FDRE Ministry of Labour and Skills",
+  "recipient_location": "Addis Ababa, Ethiopia",
+  "project_title": "Employees Housing Phase II Lot-II Construction Project",
+  "project_reference": "Design-Build, Financing and Commissioning of Ethiopian Airlines Group Employees Housing Phase II",
+  "purpose": "Request to Get a Work Permit",
+  "contracting_company": "Dar Al-Handasah",
+  "consultant_company": "Dar Al-Handasah Consultants (Shair and Partners)",
+  "employees": [
+    {
+      "serial_number": 1,
+      "full_name": "Edwin Alex",
+      "passport_number": "W1393123",
+      "position": "Project Engineer"
+    },
+    {
+      "serial_number": 2,
+      "full_name": "Saravana Muthu",
+      "passport_number": "X3331123",
+      "position": "Supervisor"
+    },
+    {
+      "serial_number": 3,
+      "full_name": "Prabu Pillappan",
+      "passport_number": "P3453123",
+      "position": "Technician"
+    }
+  ],
+  "signatory_name": "Abraham Tesfaye",
+  "signatory_title": "Director Group Infrastructure Planning & Development",
+  "contact_address": "Bole International Airport, P.O.Box 1755, Addis Ababa, Ethiopia",
+  "contact_phone": "(251-011) 617 9900",
+  "contact_website": "www.ethiopianairlines.com",
+  "attachments": "3-pages passport copy"
+}}
+
+
+    Now extract the information from the following text:
+    {text}
+    """
+    return SUPPORT_LETTER_PROMPT
