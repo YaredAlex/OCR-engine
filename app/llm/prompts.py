@@ -521,3 +521,65 @@ Ababa', 'ph', 'Yeka', 'M11', 'Woreda 11', '48e', 'FIN784532651946', 'AROTC', 'BU
     {text}
     """
     return DELEGATION_LETTER_PROMPT
+
+def experiance_letter_prompt(doc_type: str, text: str, schema: dict):
+    EXPERIANCE_LETTER_PROMPT = f"""
+    You are an information extraction system.
+
+    Extract only the following fields from the provided identity document text.
+
+    Document type: {doc_type}
+
+    Extract the information and return STRICT JSON NO ADDITIONAL fields.
+    following this schema:
+    {schema}
+
+
+    Return STRICT JSON only.
+    - Do NOT add extra fields.
+    - Do NOT add metadata.
+    - Do NOT nest the response.
+    - Do NOT include explanations.
+    - Do NOT include markdown formatting.
+    - Do NOT include text before or after the JSON.
+    - If a field is missing, return an empty string "".
+    - The output must match EXACTLY this schema structure.
+    - Do not start with new line or \n
+    - Start with {{}} 
+
+    Example 
+    Input:
+    "'MECHANICA AUTOTECH', 'Unit-I:- PLOT No.', '1303, SECTOR', '-38, PHASE -1, IND. ESTATE RAI DISTT. SONIPAT,', '(HARYANA)', 'MOB: +91 9810328276, 
+9318384652', 'Ref No.02AA232125', 'Date.04-06-2023', 'EXPERIENCE CERTIFICATE', 'This is to certify that Mr. VIMLESH KUMAR has worked as Die Casting Machine', 'Operator with MECHANICA AUTOTECH from 20-07-2019 to 10-05-2023.', 'During the above period:', 'Mr. VIMLESH KUMAR participated in performing the work with determination & sincerity.', 'As we observed he was active and very qualified person and she could perform all his', 'assigned tasks effectively.', 'Besides in my opinion, he was 
+motivated, professional, hardworking and innovative person.', 'He contributed much to our organizational goals and targets. And his performance proved to', 'be most effective in our organization.', 'Authorized signatoryProp', 'ROTNMCE', 'Unit-ⅡI:-PLOT NO. 23, SECTOR 14, PHASE 2, IMT BAWAL, REWARI-123501 HARYANA', 'Email:-mechanicaautotech@gmail.com, mechanicaatotech1303@gmail.com ·Mob:-9810328276'",
+    Output:
+    {{
+    "organization": {
+      "name": "MECHANICA AUTOTECH",
+      "address": "Unit-I: PLOT No. 1303, SECTOR-38, PHASE-1, IND. ESTATE RAI DISTT. SONIPAT, HARYANA",
+      "contact": {
+        "phone": ["+91 9810328276", "9318384652"],
+        "email": ["mechanicaautotech@gmail.com", "mechanicaatotech1303@gmail.com"]
+      },
+      "reference_number": "02AA232125",
+      "issue_date": "2023-06-04"
+    },
+    "employee": {
+      "full_name": "Vimlesh Kumar",
+      "role": "Die Casting Machine Operator",
+      "start_date": "2019-07-20",
+      "end_date": "2023-05-10",
+      "currently_employed": false
+    },
+    "performance_summary": "Participated with determination & sincerity, motivated, professional, hardworking, and innovative.",
+    "authorized_signatory": {
+      "name": null,
+      "designation": "Authorized Signatory"
+    }
+  }}
+
+
+    Now extract the information from the following text:
+    {text}
+    """
+    return EXPERIANCE_LETTER_PROMPT
