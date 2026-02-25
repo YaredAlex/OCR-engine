@@ -317,3 +317,84 @@ of net', '30,000.00 (Thirty thousand birr). In addition, the employee will be el
     {text}
     """
     return CONTRACT_LETTER_PROMPT
+
+def clearance_letter_prompt(doc_type: str, text: str, schema: dict):
+    CLEARANCE_LETTER_PROMPT = f"""
+    You are an information extraction system.
+
+    Extract only the following fields from the provided identity document text.
+
+    Document type: {doc_type}
+
+    Extract the information and return STRICT JSON NO ADDITIONAL fields.
+    following this schema:
+    {schema}
+
+
+    Return STRICT JSON only.
+    - Do NOT add extra fields.
+    - Do NOT add metadata.
+    - Do NOT nest the response.
+    - Do NOT include explanations.
+    - Do NOT include markdown formatting.
+    - Do NOT include text before or after the JSON.
+    - If a field is missing, return an empty string "".
+    - The output must match EXACTLY this schema structure.
+    - Do not start with new line or \n
+    - Start with {{}} 
+
+    Example 
+    Input:
+    "'DRC', 'CAINAK', 'REEEE', 'COUNCIL', 'Ref: DRC/034/2024', 'Date: February 14, 2024', 'FDRE Ministry of Labor and Skills', 'Addis Ababa', 'Dear Sir Madam,', 'Subject: Request for Work Permit Cancellation', 'The Danish Refugee Council (DRC) is an independent international non-governmental', 'organization, working in 35 countries throughout the world and our primary mandate is to', 'promote durable solutions for Refugees and displaced populations. DRC Regional office in 
+Nairobi', 'covers the Horn of Africa region and provides support and guidance to DRC programs in Kenya,', 'Ethiopia, Somalia, Somaliland, Puntland, and Uganda.', 'Mrs. AGNES OYELLA a Ugandan national holder of passport number A00339838, has a contract to', 'work as an AREA MANAGER. This is, therefore, to request your esteemed 
+office to cancel the', 'Work Permit of Mr. AGNES OYELLA.', 'Thank you and your usual cooperation is highly appreciated.', 'Danish', 'Sincerely,', 'DRC', 'Aurélie Leroyer', 'Ei', 'Country Direetor', '2', 'I', 'Danish Refugee Council -Ethiopia', 'fuge', 'COHR'",
+    Output:
+    {{
+  "document_type": "work_permit_cancellation_request",
+  "letter_metadata": {
+    "reference_number": "DRC/034/2024",
+    "date": "February 14, 2024",
+    "subject": "Request for Work Permit Cancellation",
+    "recipient_organization": "FDRE Ministry of Labor and Skills",
+    "recipient_location": "Addis Ababa"
+  },
+  "requesting_organization": {
+    "organization_name": "Danish Refugee Council - Ethiopia",
+    "parent_organization": "Danish Refugee Council (DRC)",
+    "branch_name": "Ethiopia Country Office",
+    "organization_type": "International NGO",
+    "address": null,
+    "email": null
+  },
+  "request_details": {
+    "request_type": "work_permit_cancellation",
+    "reason": "End of contract",
+    "description": "Request to cancel the work permit of the employee holding a Ugandan passport."
+  },
+  "employees": [
+    {
+      "full_name": "AGNES OYELLA",
+      "first_name": "AGNES",
+      "last_name": "OYELLA",
+      "passport_number": "A00339838",
+      "nationality": "Ugandan",
+      "position": "Area Manager",
+      "gender": null
+    }
+  ],
+  "signatory": {
+    "name": "Aurélie Leroyer",
+    "position": "Country Director",
+    "department": null
+  },
+  "additional_information": {
+    "attachments": null,
+    "notes": null
+  }
+}}
+
+
+    Now extract the information from the following text:
+    {text}
+    """
+    return CLEARANCE_LETTER_PROMPT
