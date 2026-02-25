@@ -177,6 +177,113 @@ EDUCATION_SCHEMA = {
   }
 }
 
+CLEARANCE_SCHEMA = {
+  "document_type": "work_permit_cancellation_request",
+  "letter_metadata": {
+    "reference_number": "",
+    "date": "",
+    "subject": "",
+    "recipient_organization": "",
+    "recipient_location": ""
+  },
+  "requesting_organization": {
+    "organization_name": "",
+    "parent_organization": "",
+    "branch_name": "",
+    "organization_type": "",
+    "address": "",
+    "email": ""
+  },
+  "request_details": {
+    "request_type": "work_permit_cancellation",
+    "reason": "",
+    "description": ""
+  },
+  "employees": [
+    {
+      "full_name": "",
+      "first_name": "",
+      "last_name": "",
+      "passport_number": "",
+      "nationality": "",
+      "position": "",
+      "gender": ""
+    }
+  ],
+  "signatory": {
+    "name": "",
+    "position": "",
+    "department": ""
+  },
+  "additional_information": {
+    "attachments": "",
+    "notes": ""
+  }
+}
+
+DELEGATION_SCHEMA= {
+  "document_type": "administrative_power_of_attorney",
+  "document_metadata": {
+    "document_number": "",
+    "registration_number": "",
+    "date_of_issue": "",
+    "issuing_authority": "",
+    "place_of_issue": ""
+  },
+  "principal": {
+    "full_name": "",
+    "represented_organization": "",
+    "nationality": "",
+    "passport_number": "",
+    "address": {
+      "city": "",
+      "sub_city": "",
+      "woreda": "",
+      "house_number": ""
+    }
+  },
+  "agent": {
+    "full_name": "",
+    "nationality": "",
+    "id_type": "",
+    "id_number": "",
+    "date_of_birth": "",
+    "gender": "",
+    "phone_number": "",
+    "address": {
+      "city": "",
+      "sub_city": "",
+      "woreda": "",
+      "house_number": ""
+    }
+  },
+  "authorization": {
+    "authorization_type": "general_administrative_power",
+    "authorized_actions": [],
+    "applicable_institutions": []
+  },
+  "legal_basis": {
+    "civil_code_articles": [
+      "Article 2199",
+      "Article 2203"
+    ]
+  },
+  "validity": {
+    "effective_date": "",
+    "expiry_date": "",
+    "revocation_allowed": ""
+  },
+  "signatures": {
+    "principal_signed": "",
+    "agent_signed": "",
+    "witnessed": ""
+  },
+  "supporting_documents": {
+    "agent_id_attached": "",
+    "principal_passport_attached": ""
+  }
+}
+
 
 BUSINESS_LICENSE = {
     "tin":"",
