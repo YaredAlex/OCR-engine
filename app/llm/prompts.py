@@ -228,3 +228,92 @@ for the consultancy service of the subject project.', "Following the Contractor'
     {text}
     """
     return SUPPORT_LETTER_PROMPT
+
+def contract_letter_prompt(doc_type: str, text: str, schema: dict):
+    CONTRACT_LETTER_PROMPT = f"""
+    You are an information extraction system.
+
+    Extract only the following fields from the provided identity document text.
+
+    Document type: {doc_type}
+
+    Extract the information and return STRICT JSON NO ADDITIONAL fields.
+    following this schema:
+    {schema}
+
+
+    Return STRICT JSON only.
+    - Do NOT add extra fields.
+    - Do NOT add metadata.
+    - Do NOT nest the response.
+    - Do NOT include explanations.
+    - Do NOT include markdown formatting.
+    - Do NOT include text before or after the JSON.
+    - If a field is missing, return an empty string "".
+    - The output must match EXACTLY this schema structure.
+    - Do not start with new line or \n
+    - Start with {{}} 
+
+    Example 
+    Input:
+    "'YYDTS', 'PERSONAL CARE', 'FACTORY', 'Y PLC', 'Employment Contract', 'hereunder.', '1. ADDRESS OF THE EMPLOYER', 'Kirkos Sub City; Kebele18; House No. 566; Telephone No. 09-11-16-23-09', 'P.O.Box', 'Aa a', '2. AGE AND ADDRESS OF THE EMPLOYEE', '2.1. Date of Birth: - 1971', 'Nationality: - Keyan Passport Number:- CK59113', '3. TYPE OF EMPLOYMENT AND PLACE OF WORK', "Coe  s eee ee pe 'oee  see ree e Im", 'his/her duties in his/her capacity as a Marketing Manager in accordance', 'with the directives of the employer on a full-time basis.', '3.2.', "The employee's place of work shall be in YYDTS Personal Care PLC, Alem", 'Gena, Ethiopia.', '4. REMUNERATION', 'The employee shall be paid Gross salary of 39,230.77 (Thirty-nine', '4.1.', 'thousand two hundred thirty birr & 77/100), House allowance 
+of net', '30,000.00 (Thirty thousand birr). In addition, the employee will be eligible', 'for a round trip of ticket twice a year to visit his family.', "Income tax is deducted from the employee's gross payment according to", '4.2.', 'income tax regulations; and paid directly to the Inland Revenue', 'administration by the employer.', '5. CONDITIONS OF EMPLOYMENT;', '5.1. The parties have hereby agreed that the conditions stipulated in the', 'Ethiopian civil code of 1960 are applicable to this contract of employment.', '5.2.', 'lod/4', 'applicable to this contractof employment', 'HOt', 'PP.9', '', '0911162309', 'YYDTS Personal Care PLC', 'E-mail: info@yydts.com • www.yydts.com', ':+251 912 0049 11', 'Number', 'Manufacturer of beauty and personal care brands.'
+'5.3.', ', devote his whole', 'employer and is', 's of the', 'Manual.', '6.1.', 'parties consent to.', '6.2.', 'service to the Employee, prior to the end of the probationary period will be', 'given.', '6.3.', "This agreement may be terminated by either party by giving a one month's", 'written notice of termination of service the one to the other, provided that', 'such notice must be given on the 1st day of the particular month.', 'IN wITNEsS hereof, the parties to this agreement have affixed their signature hereto,', 'on the date first mentioned in the agreement.', 'hc', 'TCASA', 'Lidya Esnetof', 'TEL', '  ', 'Joseph Njogu Kiando', 'YYDTS Personal Care PLC', '0911162309', '(The Employee)', '(The Employer)', 'WITNESSES:', 'Ju', 'I. Manlet fantaluy', 'tS', '2. Selam Degife'",
+    Output:
+    {{
+  "contract_type": "Employment Contract",
+
+  "employer": {
+    "company_name": "YYDTS Personal Care PLC",
+    "branch": null,
+    "address": "Kirkos Sub City, Kebele 18, Addis Ababa, Ethiopia",
+    "representative_name": null,
+    "representative_title": null
+  },
+
+  "employee": {
+    "full_name": "Joseph Njogu Kiando",
+    "address": null,
+    "phone": null,
+    "nationality": "Kenyan",
+    "passport_number": "CK59113",
+    "date_of_birth": "1971"
+  },
+
+  "employment_details": {
+    "job_title": "Marketing Manager",
+    "employment_type": "Full-Time",
+    "place_of_work": "Alem Gena, Ethiopia",
+    "start_date": null,
+    "end_date": null,
+    "contract_duration": null,
+    "probation_period": null
+  },
+
+  "compensation": {
+    "basic_salary": "39,230.77",
+    "currency": "ETB",
+    "allowances": "30,000 ETB House Allowance",
+    "payment_frequency": "Monthly"
+  },
+
+  "termination": {
+    "notice_period": "1 Month Written Notice",
+    "early_termination_conditions": null
+  },
+
+  "governing_law": "Ethiopian Civil Code of 1960",
+  "jurisdiction": null,
+
+  "signatures": {
+    "employer_signatory": "YYDTS Personal Care PLC",
+    "employee_signatory": "Joseph Njogu Kiando",
+    "contract_signed_date": null
+  }
+}}
+
+
+    Now extract the information from the following text:
+    {text}
+    """
+    return CONTRACT_LETTER_PROMPT
