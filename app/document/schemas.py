@@ -152,6 +152,32 @@ EXPERIANCE_SCHEMA = {
   }
 }
 
+EDUCATION_SCHEMA = {
+  "institution_name": "",
+  "student_name": "",
+  "degree": "",
+  "degree_classification": "",
+  "date_of_award": "",
+  "certificate_number": "",
+  "signatories": [
+    {
+      "name": "",
+      "position": ""
+    },
+    {
+      "name": "",
+      "position": ""
+    }
+  ],
+  "document_authentication": {
+    "notary_name": "",
+    "notary_office": "",
+    "authentication_date": "",
+    "seal_verified": "",
+  }
+}
+
+
 BUSINESS_LICENSE = {
     "tin":"",
     "principa_registration_no":"",
