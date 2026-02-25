@@ -2,8 +2,9 @@ from paddleocr import PaddleOCR,PPStructureV3
 from pathlib import Path
 ocr = PaddleOCR(
     use_angle_cls=True,
-use_doc_orientation_classify=False,
+use_doc_orientation_classify=True,
     use_doc_unwarping=False,
+
     lang="en",
 )
 # pp_ocr = PPStructureV3(device="GPU",
