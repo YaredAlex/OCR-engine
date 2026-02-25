@@ -31,5 +31,46 @@ LICENSE_COMPITENCY = {
     "address":"",
     "country_of_destination":"",
     "license_valid":""
+}
 
+PERMIT_REQUEST = {
+  "document_type": "work_permit_request",
+  "company": {
+    "name": "",
+    "reference_number": "",
+    "date": ""
+  },
+  "recipient": {
+    "organization": "",
+    "city": ""
+  },
+  "subject": "",
+  "project": {
+    "contract_reference": "",
+    "description": ""
+  },
+  "employees": [
+    {
+      "full_name": "",
+      "passport_number": "",
+      "nationality": "",
+      "position": ""
+    }
+  ],
+  "request_statement": "",
+  "signatory": {
+    "name": "",
+    "position": ""
+  }
+}
+
+GENERAL_SCHEMA = {
+  "document_type": "",
+  "metadata": {},
+  "entities": {},
+  "dates": {},
+  "identifiers": {},
+  "table_data": [],
+  "signatories": [],
+  "raw_text": ""
 }
