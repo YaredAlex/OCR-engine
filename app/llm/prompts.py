@@ -583,3 +583,64 @@ motivated, professional, hardworking and innovative person.', 'He contributed mu
     {text}
     """
     return EXPERIANCE_LETTER_PROMPT
+
+def educational_letter_prompt(doc_type: str, text: str, schema: dict):
+    EDUCATIONAL_LETTER_PROMPT = f"""
+    You are an information extraction system.
+
+    Extract only the following fields from the provided identity document text.
+
+    Document type: {doc_type}
+
+    Extract the information and return STRICT JSON NO ADDITIONAL fields.
+    following this schema:
+    {schema}
+
+
+    Return STRICT JSON only.
+    - Do NOT add extra fields.
+    - Do NOT add metadata.
+    - Do NOT nest the response.
+    - Do NOT include explanations.
+    - Do NOT include markdown formatting.
+    - Do NOT include text before or after the JSON.
+    - If a field is missing, return an empty string "".
+    - The output must match EXACTLY this schema structure.
+    - Do not start with new line or \n
+    - Start with {{}} 
+
+    Example 
+    Input:
+    "'MAKERERE', 'UNIVERSITY', 'This is to certify that', 'RAM KUMAR', 'was awarded the degree of', 'BACHELOR OF', 'CHEMICAL ENGINNERING', '(SECOND CLASS LOWER)', 'and was admitted to the degree', 'at a Makerere University Congregation', 'held on 16th APRIL, 2016', 'L', 'B', 'Vice-Chancellor', 'Academic Registrar', 'MCS 00018426', '05/1/4256/EVE', 'CS', 'CamScanner'
+extracted text is  'CamScanner', 'CS', '14 DEC 201', 'NOTARIAL', 'NOTAMIAL', 'NOTARIAL', 'NOTARY GREAMR MUMBA', 'T.T. SHUMARE', 'NOTARIALNOTANIAL', 'ATTESTID BNY ME', '01', '2000330 P1', '', '2', 'Mantralava, Mumbal', 'Government of Maharashtra', 'Home Department', 'Section Officer', '4ler', 'Is hereby certified', 'N.M', 'The Signature of Shrismma diaa Li', 'of', 'a', 't ', '4V1?', ',', '10560', '7vY0L', 'aaei', 'Dt', '', 'NOr', '', 'YA', 'N5. 0E0 2017', 'Registration Bxpent IV', 'Document Authentication and', 'wWy', 'Shimchs Adatr Tsegs', 'mm', 'Jm0x 34', '1p', 'Date 06/04/22', 'oLv', 'LNO.', 'MC', '42642622', '204929', 'SIC NATURE AND SEAL AUTHENTICATED', '(VTuLC74 -443CA -004AL 360)', 'MINISTRY OF FOREIGN AFFAIRS', 'POT ML TLMC', 'RAL DEMOCRATIC REPUBLIC OF ETHIOPIA', 'CAirkS LRaE ATh&nse stmAh'",
+    Output:
+    {{
+  "institution_name": "Makerere University",
+  "student_name": "RAM KUMAR",
+  "degree": "Bachelor of Chemical Engineering",
+  "degree_classification": "Second Class Lower",
+  "date_of_award": "16 APR 2016",
+  "certificate_number": "MCS 00018426",
+  "signatories": [
+    {
+      "name": "Vice-Chancellor",
+      "position": "Vice-Chancellor"
+    },
+    {
+      "name": "Academic Registrar",
+      "position": "Academic Registrar"
+    }
+  ],
+  "document_authentication": {
+    "notary_name": "T.T. Shumare",
+    "notary_office": "Government of Maharashtra",
+    "authentication_date": "14 DEC 2017",
+    "seal_verified": true
+  }
+}}
+
+
+    Now extract the information from the following text:
+    {text}
+    """
+    return EDUCATIONAL_LETTER_PROMPT
