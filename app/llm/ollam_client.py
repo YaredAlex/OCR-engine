@@ -5,15 +5,23 @@ from langchain_ollama.llms import OllamaLLM
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
 # MODEL = "llama3.1:8b"
-MODEL = "gpt-oss:20b"
+# MODEL = "gpt-oss:20b-cloud"
+# MODEL = "gpt-oss:20b"
 # MODEL = "gemma3:1b"
+# MODEL = "gemma3:1b-it-qat"
 # MODEL = "qwen3:0.6b"
 # MODEL = "qwen3:4b"
+# MODEL = "gemma3:4b-cloud"
+# MODEL = "ministral-3:8b"
+# MODEL = "ministral-3:14b-cloud"
+# MODEL = "ministral-3:3b-cloud"
+MODEL = "ministral-3:3b-instruct-2512-q4_K_M"
 client = Client(host='http://localhost:11434')
 
 llm_chain = OllamaLLM(
     model=MODEL, 
     temperature=0.0,
+    reasoning=False,
 )
 
 # method 1 using http request 
