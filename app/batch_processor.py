@@ -11,8 +11,8 @@ from ocr.engine import extract_text
 from ocr.preprocess import preprocess_image
 from document.classifier import classify_documents
 from llm.prompts import extraction_prompt
-from document.schemas import BUSINESS_LICENSE, ID_SCHEMA, LICENSE_COMPITENCY
-
+from document.schemas import BUSINESS_LICENSE, CLEARANCE_SCHEMA, CONTRACT_SCHEMA, DELEGATION_SCHEMA, EDUCATION_SCHEMA, EXPERIENCE_SCHEMA, ID_SCHEMA, LICENSE_COMPITENCY, PASSPORT_SCHEMA, SUPPORT_LETTER_SCHEMA, VISA_SCHEMA
+import re
 
 INPUT_DIR = "data/input"
 OUTPUT_DIR = "data/output"
@@ -94,16 +94,33 @@ def process_file(filenames: list[str] = None, single_path: str = None):
     # doc_type = classify_document(full_text)
     doc_types:list[str] = classify_documents(list(combined_texts.values()))
      # the llm some times ends with \n
-    doc_types = [doc_type.replace("\n","") for doc_type in doc_types]
+    doc_types = [re.sub("\*","",doc_type.replace("\n","")) for doc_type in doc_types]
     print("doctypes is ", doc_types)
-    def get_schema(doc_type:str):
+    def get_schema(doc_type: str):
         doc_type = doc_type.lower()
-        if doc_type in ["national id", "passport","visa"]:
-            return ID_SCHEMA
-        if doc_type in ["license compitency"]:
+        
+        if doc_type in ["passport"]:
+            return PASSPORT_SCHEMA
+        if doc_type in ["visa"]:
+            return VISA_SCHEMA
+        if doc_type in ["support letter", "support letters"]:
+            return SUPPORT_LETTER_SCHEMA
+        if doc_type in ["contract", "employment contract", "service contract", "sales contract"]:
+            return CONTRACT_SCHEMA
+        if doc_type in ["work experience", "experience letter"]:
+            return EXPERIENCE_SCHEMA
+        if doc_type in ["education certificate", "educational document", "degree certificate"]:
+            return EDUCATION_SCHEMA
+        if doc_type in ["clearance request", "clearance request letter"]:
+            return CLEARANCE_SCHEMA
+        if doc_type in ["delegation", "letter of delegation", "power of attorney"]:
+            return DELEGATION_SCHEMA
+        if doc_type in ["license compitency", "competency license"]:
             return LICENSE_COMPITENCY
-        if doc_type in ["commercial registration"]:
+        if doc_type in ["commercial registration", "business license"]:
             return BUSINESS_LICENSE
+
+        # Default empty schema if type is unknown
         return {}
     # batch processing documents 
     prompts = [extraction_prompt(doc_type, text, get_schema(doc_type)) for text,doc_type in zip(combined_texts.values(),doc_types)]
