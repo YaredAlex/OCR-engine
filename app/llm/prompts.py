@@ -182,6 +182,7 @@ def support_letter_prompt(doc_type: str, text: str, schema: dict):
 for the consultancy service of the subject project.', "Following the Contractor's request, the Employer's representative requested us, through", 'its letter dated December 24, 2024, with Ref. No. ET23222-0200S/E/442-24 to issue a', "supporting letter for the issuance of work permit for the underlisted contractors' staffs.", "Thus, we kindly request the Ministry to assist the underlisted contractor's staffs to get", 'work permit and stay in Ethiopia for the project duration.', 'No.', 'Name', 'Passport No.', 'Position/Professional', '1', 'Edwin Alex', 'W 1393123', 'Project Engineer', '2', 'Saravana Muthu', 'X 3331123', 'Supervisor', '3', 'Prabu Pillappan', 'P 3453123', 'Technician', 'Your cooperation is highly appreciated.', 'Sincerely,', 'RPC', 'ony', 'Abraham Tesfaye', 'AENWOLN', 'Director Group Infrastructure', 'Planning & development', 'AG/mw', 'Encl: 3-pages passport copy', 'Bole International Airport, P.O.Box 1755, Addis Ababa, Ethiopia Tel: (251-011) 617 9900, Hotline Number 6787,', 'Fax: (251-011) 661 1474', 'www.ethiopianairlines.com'",
     Output:
     {{
+    "document_type":"support letter"
   "letter_reference_number": "EAL/GIPD/1905/24",
   "letter_date": "27 December 2024",
   "issuing_organization": "Ethiopian Airlines Group",
@@ -189,24 +190,20 @@ for the consultancy service of the subject project.', "Following the Contractor'
   "recipient_organization": "FDRE Ministry of Labour and Skills",
   "recipient_location": "Addis Ababa, Ethiopia",
   "project_title": "Employees Housing Phase II Lot-II Construction Project",
-  "purpose": "Request to Get a Work Permit",
   "contracting_company": "Dar Al-Handasah",
   "consultant_company": "Dar Al-Handasah Consultants (Shair and Partners)",
   "employees": [
     {
-      "serial_number": 1,
       "full_name": "Edwin Alex",
       "passport_number": "W1393123",
       "position": "Project Engineer"
     },
     {
-      "serial_number": 2,
       "full_name": "Saravana Muthu",
       "passport_number": "X3331123",
       "position": "Supervisor"
     },
     {
-      "serial_number": 3,
       "full_name": "Prabu Pillappan",
       "passport_number": "P3453123",
       "position": "Technician"
