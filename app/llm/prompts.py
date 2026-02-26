@@ -81,7 +81,6 @@ def passport_id_prompt(doc_type: str, text: str, schema: dict):
   "place_of_birth": "FUJIAN",
   "issue_date": "28 JAN 2023",
   "expiry_date": "27 JAN 2033",
-  "place_of_issue": "FUJIAN",
   "mrz_line_1": "P<CHNFENG<<JINHUA<<<<<<<<<<<<<<<<<<<<<<<<<<<",
   "mrz_line_2": "EJ77997741CHN7009150M3301270<<<<<<<<<<<<<<"
 }}
@@ -125,6 +124,7 @@ def visa_prompt(doc_type: str, text: str, schema: dict):
     /Authorized Signature', 'Ppf', 'VS5241245', 'VWEHSINGH<GANVIAY<<<<<<<<<<<<', 'Z6812712<4IND8401027M231109052476073', '3', 'VSISIMSSA'",
     Output:
     {{
+    "document_type":"visa",
   "visa_number": "VS5241245",
   "visa_type": "Tourist Visa Single Entry 30 Days",
   "valid_from": "27 SEP 2023",
@@ -133,15 +133,13 @@ def visa_prompt(doc_type: str, text: str, schema: dict):
   "issuing_country": "Federal Democratic Republic of Ethiopia",
   "place_of_issue": "MDINA",
   "issue_date": "10 OCT 2023",
+  "expiry_date":""
   "full_name": "SINGH, RANVIJAY",
   "surname": "SINGH",
   "given_names": "RANVIJAY",
   "sex": "M",
   "date_of_birth": "02 JAN 1984",
   "nationality": "INDIA",
-  "passport_number": "Z6812712",
-  "passport_issue_date": "28 NOV 2022",
-  "passport_expiry_date": "27 NOV 2032",
   "reference_code": "JCeH5752",
   "mrz_line_1": "VWEHSINGH<RANVIJAY<<<<<<<<<<<<",
   "mrz_line_2": "Z6812712<4IND8401027M231109052476073"
@@ -191,7 +189,6 @@ for the consultancy service of the subject project.', "Following the Contractor'
   "recipient_organization": "FDRE Ministry of Labour and Skills",
   "recipient_location": "Addis Ababa, Ethiopia",
   "project_title": "Employees Housing Phase II Lot-II Construction Project",
-  "project_reference": "Design-Build, Financing and Commissioning of Ethiopian Airlines Group Employees Housing Phase II",
   "purpose": "Request to Get a Work Permit",
   "contracting_company": "Dar Al-Handasah",
   "consultant_company": "Dar Al-Handasah Consultants (Shair and Partners)",
@@ -215,12 +212,8 @@ for the consultancy service of the subject project.', "Following the Contractor'
       "position": "Technician"
     }
   ],
-  "signatory_name": "Abraham Tesfaye",
-  "signatory_title": "Director Group Infrastructure Planning & Development",
   "contact_address": "Bole International Airport, P.O.Box 1755, Addis Ababa, Ethiopia",
   "contact_phone": "(251-011) 617 9900",
-  "contact_website": "www.ethiopianairlines.com",
-  "attachments": "3-pages passport copy"
 }}
 
 
@@ -261,14 +254,13 @@ of net', '30,000.00 (Thirty thousand birr). In addition, the employee will be el
 '5.3.', ', devote his whole', 'employer and is', 's of the', 'Manual.', '6.1.', 'parties consent to.', '6.2.', 'service to the Employee, prior to the end of the probationary period will be', 'given.', '6.3.', "This agreement may be terminated by either party by giving a one month's", 'written notice of termination of service the one to the other, provided that', 'such notice must be given on the 1st day of the particular month.', 'IN wITNEsS hereof, the parties to this agreement have affixed their signature hereto,', 'on the date first mentioned in the agreement.', 'hc', 'TCASA', 'Lidya Esnetof', 'TEL', '  ', 'Joseph Njogu Kiando', 'YYDTS Personal Care PLC', '0911162309', '(The Employee)', '(The Employer)', 'WITNESSES:', 'Ju', 'I. Manlet fantaluy', 'tS', '2. Selam Degife'",
     Output:
     {{
+    "document_type":"contract letter",
   "contract_type": "Employment Contract",
 
   "employer": {
     "company_name": "YYDTS Personal Care PLC",
     "branch": null,
     "address": "Kirkos Sub City, Kebele 18, Addis Ababa, Ethiopia",
-    "representative_name": null,
-    "representative_title": null
   },
 
   "employee": {
@@ -297,19 +289,6 @@ of net', '30,000.00 (Thirty thousand birr). In addition, the employee will be el
     "payment_frequency": "Monthly"
   },
 
-  "termination": {
-    "notice_period": "1 Month Written Notice",
-    "early_termination_conditions": null
-  },
-
-  "governing_law": "Ethiopian Civil Code of 1960",
-  "jurisdiction": null,
-
-  "signatures": {
-    "employer_signatory": "YYDTS Personal Care PLC",
-    "employee_signatory": "Joseph Njogu Kiando",
-    "contract_signed_date": null
-  }
 }}
 
 
@@ -350,7 +329,7 @@ Nairobi', 'covers the Horn of Africa region and provides support and guidance to
 office to cancel the', 'Work Permit of Mr. AGNES OYELLA.', 'Thank you and your usual cooperation is highly appreciated.', 'Danish', 'Sincerely,', 'DRC', 'Aurélie Leroyer', 'Ei', 'Country Direetor', '2', 'I', 'Danish Refugee Council -Ethiopia', 'fuge', 'COHR'",
     Output:
     {{
-  "document_type": "work_permit_cancellation_request",
+  "document_type": "clearance letter",
   "letter_metadata": {
     "reference_number": "DRC/034/2024",
     "date": "February 14, 2024",
@@ -366,11 +345,6 @@ office to cancel the', 'Work Permit of Mr. AGNES OYELLA.', 'Thank you and your u
     "address": null,
     "email": null
   },
-  "request_details": {
-    "request_type": "work_permit_cancellation",
-    "reason": "End of contract",
-    "description": "Request to cancel the work permit of the employee holding a Ugandan passport."
-  },
   "employees": [
     {
       "full_name": "AGNES OYELLA",
@@ -382,15 +356,6 @@ office to cancel the', 'Work Permit of Mr. AGNES OYELLA.', 'Thank you and your u
       "gender": null
     }
   ],
-  "signatory": {
-    "name": "Aurélie Leroyer",
-    "position": "Country Director",
-    "department": null
-  },
-  "additional_information": {
-    "attachments": null,
-    "notes": null
-  }
 }}
 
 
@@ -434,7 +399,7 @@ def delegation_letter_prompt(doc_type: str, text: str, schema: dict):
 Ababa', 'ph', 'Yeka', 'M11', 'Woreda 11', '48e', 'FIN784532651946', 'AROTC', 'BU D M nX 7M M D-SCh= A 9779 E Mi.t/arpnt=', 'SN:', '7165010', 'If lost and found, please return to nearby police station or to the institution. Call 9779 or visit id.et/cardprint for more.'",
     Output:
     {{
-  "document_type": "administrative_power_of_attorney",
+  "document_type": "delegation letter",
   "document_metadata": {
     "document_number": "B11/0014006/1/2017",
     "registration_number": "4451239",
@@ -447,12 +412,6 @@ Ababa', 'ph', 'Yeka', 'M11', 'Woreda 11', '48e', 'FIN784532651946', 'AROTC', 'BU
     "represented_organization": "Dunamis International Gospel Center",
     "nationality": "Nigerian",
     "passport_number": "A12657503",
-    "address": {
-      "city": "Addis Ababa",
-      "sub_city": "Lemi Kura",
-      "woreda": "8",
-      "house_number": "new"
-    }
   },
   "agent": {
     "full_name": "Hawi Marekos Terfa",
@@ -462,12 +421,6 @@ Ababa', 'ph', 'Yeka', 'M11', 'Woreda 11', '48e', 'FIN784532651946', 'AROTC', 'BU
     "date_of_birth": "1982-02-23",
     "gender": "Female",
     "phone_number": "0911057452",
-    "address": {
-      "city": "Addis Ababa",
-      "sub_city": "Yeka",
-      "woreda": "11",
-      "house_number": "new"
-    }
   },
   "authorization": {
     "authorization_type": "general_administrative_power",
@@ -485,35 +438,12 @@ Ababa', 'ph', 'Yeka', 'M11', 'Woreda 11', '48e', 'FIN784532651946', 'AROTC', 'BU
       "manage_registered_property",
       "receive_and_submit_documents"
     ],
-    "applicable_institutions": [
-      "Federal Offices",
-      "Ministry of Labor and Social Affairs",
-      "Immigration Office",
-      "Sub City Offices",
-      "Kebele Offices",
-      "Courts"
-    ]
-  },
-  "legal_basis": {
-    "civil_code_articles": [
-      "Article 2199",
-      "Article 2203"
-    ]
   },
   "validity": {
     "effective_date": "2025-01-24",
     "expiry_date": null,
     "revocation_allowed": true
   },
-  "signatures": {
-    "principal_signed": true,
-    "agent_signed": null,
-    "witnessed": true
-  },
-  "supporting_documents": {
-    "agent_id_attached": true,
-    "principal_passport_attached": true
-  }
 }}
 
 
@@ -569,13 +499,7 @@ motivated, professional, hardworking and innovative person.', 'He contributed mu
       "role": "Die Casting Machine Operator",
       "start_date": "2019-07-20",
       "end_date": "2023-05-10",
-      "currently_employed": false
     },
-    "performance_summary": "Participated with determination & sincerity, motivated, professional, hardworking, and innovative.",
-    "authorized_signatory": {
-      "name": null,
-      "designation": "Authorized Signatory"
-    }
   }}
 
 
@@ -621,22 +545,6 @@ extracted text is  'CamScanner', 'CS', '14 DEC 201', 'NOTARIAL', 'NOTAMIAL', 'NO
   "degree_classification": "Second Class Lower",
   "date_of_award": "16 APR 2016",
   "certificate_number": "MCS 00018426",
-  "signatories": [
-    {
-      "name": "Vice-Chancellor",
-      "position": "Vice-Chancellor"
-    },
-    {
-      "name": "Academic Registrar",
-      "position": "Academic Registrar"
-    }
-  ],
-  "document_authentication": {
-    "notary_name": "T.T. Shumare",
-    "notary_office": "Government of Maharashtra",
-    "authentication_date": "14 DEC 2017",
-    "seal_verified": true
-  }
 }}
 
 
