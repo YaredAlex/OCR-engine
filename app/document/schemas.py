@@ -169,7 +169,7 @@ CLEARANCE_SCHEMA = {
 }
 
 DELEGATION_SCHEMA= {
-  "document_type": "administrative_power_of_attorney",
+  "document_type": "",
   "document_metadata": {
     "document_number": "",
     "registration_number": "",
@@ -182,12 +182,6 @@ DELEGATION_SCHEMA= {
     "represented_organization": "",
     "nationality": "",
     "passport_number": "",
-    "address": {
-      "city": "",
-      "sub_city": "",
-      "woreda": "",
-      "house_number": ""
-    }
   },
   "agent": {
     "full_name": "",
@@ -197,38 +191,17 @@ DELEGATION_SCHEMA= {
     "date_of_birth": "",
     "gender": "",
     "phone_number": "",
-    "address": {
-      "city": "",
-      "sub_city": "",
-      "woreda": "",
-      "house_number": ""
-    }
   },
   "authorization": {
-    "authorization_type": "general_administrative_power",
+    "authorization_type": "",
     "authorized_actions": [],
     "applicable_institutions": []
-  },
-  "legal_basis": {
-    "civil_code_articles": [
-      "Article 2199",
-      "Article 2203"
-    ]
   },
   "validity": {
     "effective_date": "",
     "expiry_date": "",
     "revocation_allowed": ""
   },
-  "signatures": {
-    "principal_signed": "",
-    "agent_signed": "",
-    "witnessed": ""
-  },
-  "supporting_documents": {
-    "agent_id_attached": "",
-    "principal_passport_attached": ""
-  }
 }
 
 
