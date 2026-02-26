@@ -1,268 +1,100 @@
-2025-12-25 10:50:26.143 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
-2025-12-25 10:50:26.180 | ERROR    | __main__:run_single_document:31 - Single document processing failed: PaddleOCR.predict() got an unexpected keyword argument 'cls'
-Traceback (most recent call last):
-
-  File "D:\LMIS\OCR\OCR_v1\app\main.py", line 83, in <module>
-    main()
-    └ <function main at 0x0000028EA89AC2C0>
-
-  File "D:\LMIS\OCR\OCR_v1\app\main.py", line 73, in main
-    run_single_document(args.file)
-    │                   │    └ 'sample.jpg'
-    │                   └ Namespace(mode='single', file='sample.jpg')
-    └ <function run_single_document at 0x0000028E86621C60>
-
-> File "D:\LMIS\OCR\OCR_v1\app\main.py", line 28, in run_single_document
-    process_file(os.path.basename(file_path), single_path=file_path)
-    │            │  │    │        │                       └ 'sample.jpg'
-    │            │  │    │        └ 'sample.jpg'
-    │            │  │    └ <function basename at 0x0000028E83F0D300>
-    │            │  └ <module 'ntpath' (frozen)>
-    │            └ <module 'os' (frozen)>
-    └ <function process_file at 0x0000028E866231A0>
-
-  File "D:\LMIS\OCR\OCR_v1\app\batch_processor.py", line 18, in process_file
-    text = extract_text(clean_img)
-           │            └ 'sample_clean.jpg'
-           └ <function extract_text at 0x0000028EA1017B00>
-
-  File "D:\LMIS\OCR\OCR_v1\app\ocr\engine.py", line 9, in extract_text
-    result = ocr.ocr(image_path, cls=True)
-             │   │   └ 'sample_clean.jpg'
-             │   └ <function PaddleOCR.ocr at 0x0000028EA0FF2E80>
-             └ <paddleocr._pipelines.ocr.PaddleOCR object at 0x0000028E872C2F50>
-
-  File "D:\LMIS\OCR\env\Lib\site-packages\typing_extensions.py", line 3004, in wrapper
-    return arg(*args, **kwargs)
-           │    │       └ {'cls': True}
-           │    └ (<paddleocr._pipelines.ocr.PaddleOCR object at 0x0000028E872C2F50>, 'sample_clean.jpg')
-           └ <function PaddleOCR.ocr at 0x0000028EA0FF2DE0>
-  File "D:\LMIS\OCR\env\Lib\site-packages\paddleocr\_pipelines\ocr.py", line 231, in ocr
-    return self.predict(img, **kwargs)
-           │    │       │      └ {'cls': True}
-           │    │       └ 'sample_clean.jpg'
-           │    └ <function PaddleOCR.predict at 0x0000028EA0FF2D40>
-           └ <paddleocr._pipelines.ocr.PaddleOCR object at 0x0000028E872C2F50>
-
-TypeError: PaddleOCR.predict() got an unexpected keyword argument 'cls'
-2025-12-25 10:52:23.496 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
-2025-12-25 10:52:56.231 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
-2025-12-25 10:54:19.310 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
-2025-12-25 10:54:41.344 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
-2025-12-25 10:57:25.072 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
-2025-12-25 10:57:48.578 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
-2025-12-25 11:04:06.309 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
-2025-12-25 11:04:24.957 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
-2025-12-25 11:05:58.081 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
-2025-12-25 11:06:11.998 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
-2025-12-25 11:10:38.820 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
-2025-12-25 11:10:51.086 | ERROR    | __main__:run_single_document:31 - Single document processing failed: 1
-Traceback (most recent call last):
-
-  File "D:\LMIS\OCR\OCR_v1\app\main.py", line 83, in <module>
-    main()
-    └ <function main at 0x00000269DA7AC2C0>
-
-  File "D:\LMIS\OCR\OCR_v1\app\main.py", line 73, in main
-    run_single_document(args.file)
-    │                   │    └ 'sample.jpg'
-    │                   └ Namespace(mode='single', file='sample.jpg')
-    └ <function run_single_document at 0x00000269B82D1C60>
-
-> File "D:\LMIS\OCR\OCR_v1\app\main.py", line 28, in run_single_document
-    process_file(os.path.basename(file_path), single_path=file_path)
-    │            │  │    │        │                       └ 'sample.jpg'
-    │            │  │    │        └ 'sample.jpg'
-    │            │  │    └ <function basename at 0x00000269B5C7D300>
-    │            │  └ <module 'ntpath' (frozen)>
-    │            └ <module 'os' (frozen)>
-    └ <function process_file at 0x00000269B82D31A0>
-
-  File "D:\LMIS\OCR\OCR_v1\app\batch_processor.py", line 18, in process_file
-    text = extract_text(clean_img)
-           │            └ 'sample_clean.jpg'
-           └ <function extract_text at 0x00000269D2E17B00>
-
-  File "D:\LMIS\OCR\OCR_v1\app\ocr\engine.py", line 13, in extract_text
-    lines.append(line[1][0])
-    │     │      └ {'input_path': 'sample_clean.jpg', 'page_index': None, 'doc_preprocessor_res': {'input_path': None, 'page_index': None, 'inpu...
-    │     └ <method 'append' of 'list' objects>
-    └ []
-
-KeyError: 1
-2025-12-25 11:11:03.722 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
-2025-12-25 11:14:13.535 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
-2025-12-25 11:22:17.294 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
-2025-12-25 11:22:41.094 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
-2025-12-25 11:25:35.783 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
-2025-12-25 11:26:24.885 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
-2025-12-25 11:26:58.160 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
-2025-12-25 11:32:33.055 | INFO     | __main__:run_single_document:25 - Processing single document: sample.jpg
-2025-12-25 11:33:14.927 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
-2025-12-25 12:06:47.506 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
-2025-12-25 12:06:47.507 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2025-12-25 12:07:54.568 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
-2025-12-25 12:07:54.568 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2025-12-25 12:07:54.571 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2025-12-25 12:17:41.822 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
-2025-12-25 12:17:41.824 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2025-12-25 12:17:41.829 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2025-12-25 12:22:24.188 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2025-12-25 12:22:24.188 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2025-12-25 12:29:08.684 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2025-12-25 12:29:08.688 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2025-12-29 16:40:45.364 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2025-12-29 16:40:45.372 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2025-12-29 16:43:06.934 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2025-12-29 16:43:06.937 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2025-12-29 16:43:56.011 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2025-12-29 16:43:56.015 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2025-12-29 17:21:32.517 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2025-12-29 17:21:32.518 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2025-12-30 11:41:58.750 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2025-12-30 11:41:58.750 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2025-12-30 11:51:59.208 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2025-12-30 11:51:59.211 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2025-12-30 12:00:55.087 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2025-12-30 12:00:55.091 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2025-12-30 12:02:19.945 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2025-12-30 12:02:19.949 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2025-12-30 13:03:44.184 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2025-12-30 13:03:44.188 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2025-12-30 19:21:29.633 | INFO     | __main__:run_single_document:25 - Processing single document: ./slip_license.pdf
-2025-12-30 19:23:01.998 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
-2026-02-05 14:20:57.518 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2026-02-05 14:20:57.551 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2026-02-05 14:32:06.017 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2026-02-05 14:32:06.033 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2026-02-05 14:32:23.174 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2026-02-05 14:32:23.196 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2026-02-05 14:34:37.173 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2026-02-05 14:34:37.190 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2026-02-05 14:45:06.017 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2026-02-05 14:45:06.017 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2026-02-09 10:32:02.618 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2026-02-09 10:32:02.618 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2026-02-09 10:45:50.693 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2026-02-09 10:45:50.695 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2026-02-09 10:46:55.268 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2026-02-09 10:46:55.277 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2026-02-09 10:48:27.378 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2026-02-09 10:48:27.378 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2026-02-09 10:50:23.133 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2026-02-09 10:50:23.133 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2026-02-09 10:53:58.137 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2026-02-09 10:53:58.143 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2026-02-09 10:58:43.060 | INFO     | __main__:main:146 - Pipeline started in 'api' mode
-2026-02-09 10:58:43.060 | INFO     | __main__:run_api_mode:109 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:15:17.948 | INFO     | __main__:main:171 - Pipeline started in 'api' mode
-2026-02-09 11:15:17.948 | INFO     | __main__:run_api_mode:134 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:17:04.672 | INFO     | __main__:main:171 - Pipeline started in 'api' mode
-2026-02-09 11:17:04.674 | INFO     | __main__:run_api_mode:134 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:17:30.690 | INFO     | __main__:main:171 - Pipeline started in 'api' mode
-2026-02-09 11:17:30.700 | INFO     | __main__:run_api_mode:134 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:18:29.966 | INFO     | __main__:main:171 - Pipeline started in 'api' mode
-2026-02-09 11:18:29.966 | INFO     | __main__:run_api_mode:134 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:19:42.568 | INFO     | __main__:main:171 - Pipeline started in 'api' mode
-2026-02-09 11:19:42.570 | INFO     | __main__:run_api_mode:134 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:21:07.287 | INFO     | __main__:main:171 - Pipeline started in 'api' mode
-2026-02-09 11:21:07.287 | INFO     | __main__:run_api_mode:134 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:23:40.985 | INFO     | __main__:main:171 - Pipeline started in 'api' mode
-2026-02-09 11:23:40.985 | INFO     | __main__:run_api_mode:134 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:26:55.654 | INFO     | __main__:main:171 - Pipeline started in 'api' mode
-2026-02-09 11:26:55.656 | INFO     | __main__:run_api_mode:134 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:27:40.059 | INFO     | __main__:main:171 - Pipeline started in 'api' mode
-2026-02-09 11:27:40.059 | INFO     | __main__:run_api_mode:134 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:29:46.352 | INFO     | __main__:main:171 - Pipeline started in 'api' mode
-2026-02-09 11:29:46.352 | INFO     | __main__:run_api_mode:134 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:31:20.505 | INFO     | __main__:main:171 - Pipeline started in 'api' mode
-2026-02-09 11:31:20.505 | INFO     | __main__:run_api_mode:134 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:34:07.553 | INFO     | __main__:main:171 - Pipeline started in 'api' mode
-2026-02-09 11:34:07.553 | INFO     | __main__:run_api_mode:134 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:42:30.629 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
-2026-02-09 11:42:30.629 | INFO     | __main__:main:171 - Pipeline started in 'api' mode
-2026-02-09 11:42:30.629 | INFO     | __main__:run_api_mode:134 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:47:02.455 | INFO     | __main__:main:171 - Pipeline started in 'api' mode
-2026-02-09 11:47:02.457 | INFO     | __main__:run_api_mode:134 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:50:13.882 | INFO     | __main__:main:172 - Pipeline started in 'api' mode
-2026-02-09 11:50:13.883 | INFO     | __main__:run_api_mode:135 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:51:21.393 | INFO     | __main__:main:172 - Pipeline started in 'api' mode
-2026-02-09 11:51:21.393 | INFO     | __main__:run_api_mode:135 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:56:19.176 | INFO     | __main__:main:173 - Pipeline started in 'api' mode
-2026-02-09 11:56:19.176 | INFO     | __main__:run_api_mode:136 - Starting API server at http://0.0.0.0:8000
-2026-02-09 11:59:14.294 | INFO     | __main__:main:173 - Pipeline started in 'api' mode
-2026-02-09 11:59:14.294 | INFO     | __main__:run_api_mode:136 - Starting API server at http://0.0.0.0:8000
-2026-02-09 16:07:27.706 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
-2026-02-09 16:07:27.706 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-09 16:07:27.708 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-10 14:12:32.743 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-10 14:12:32.743 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-10 14:20:34.533 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-10 14:20:34.533 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-13 14:58:20.500 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
-2026-02-13 14:58:20.502 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-13 14:58:20.503 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-18 16:20:03.264 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
-2026-02-18 16:20:03.264 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-18 16:20:03.272 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 09:38:19.175 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 09:38:19.175 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 09:57:54.200 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 09:57:54.201 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 09:59:47.781 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 09:59:47.796 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 10:07:12.814 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 10:07:12.814 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 10:11:46.434 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 10:11:46.434 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 10:12:49.926 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 10:12:49.936 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 10:16:53.623 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 10:16:53.623 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 10:26:50.937 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 10:26:50.939 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 10:32:25.836 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 10:32:25.836 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 10:38:16.433 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 10:38:16.435 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 10:42:42.314 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 10:42:42.314 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 10:48:05.452 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 10:48:05.452 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 11:06:06.378 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 11:06:06.388 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 11:09:45.796 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 11:09:45.796 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 11:13:31.197 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 11:13:31.197 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 11:34:27.050 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 11:34:27.050 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 11:38:30.133 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 11:38:30.133 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 11:39:28.412 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 11:39:28.427 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 11:43:56.411 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 11:43:56.414 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 11:58:08.387 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 11:58:08.403 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 11:59:46.203 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 11:59:46.203 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 14:40:24.566 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
-2026-02-19 14:40:24.566 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 14:40:24.566 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 14:43:15.776 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 14:43:15.776 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 14:45:17.686 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 14:45:17.686 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 14:49:26.956 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 14:49:26.956 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 14:57:59.620 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
-2026-02-19 14:57:59.620 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 14:57:59.635 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 15:07:30.488 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 15:07:30.490 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 15:17:20.842 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 15:17:20.842 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
-2026-02-19 15:23:55.944 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
-2026-02-19 15:23:55.960 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
-2026-02-19 15:23:55.960 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-23 14:40:48.209 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-23 14:40:48.209 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-23 14:40:48.209 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-23 14:50:31.275 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-23 14:50:31.275 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-23 14:55:54.696 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-23 14:55:54.696 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-23 14:57:50.564 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-23 14:57:50.564 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-23 14:57:50.564 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-23 15:03:55.272 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-23 15:03:55.288 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-23 15:06:36.187 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-23 15:06:36.187 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-23 15:06:36.187 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-23 15:13:29.540 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-23 15:13:29.540 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-23 15:20:48.902 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-23 15:20:48.902 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-23 15:20:48.902 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-23 15:22:42.332 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-23 15:22:42.332 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-23 15:22:42.340 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-23 15:30:24.037 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-23 15:30:24.037 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-23 15:32:08.612 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-23 15:32:08.612 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-23 15:48:46.589 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-23 15:48:46.589 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-24 10:38:07.472 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-24 10:38:07.472 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-24 10:38:07.472 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-24 10:52:24.633 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-24 10:52:24.633 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-24 10:52:24.649 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-24 10:56:20.132 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-24 10:56:20.132 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-24 10:56:20.132 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-24 10:59:31.208 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-24 10:59:31.208 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-24 10:59:31.208 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-24 11:14:46.542 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-24 11:14:46.542 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-24 11:33:06.761 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-24 11:33:06.777 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-24 11:35:07.992 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-24 11:35:07.992 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-24 11:35:07.994 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-24 12:01:24.995 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-24 12:01:24.995 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-24 12:01:24.995 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-24 14:46:46.090 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-24 14:46:46.090 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-24 14:46:46.090 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-24 14:50:25.233 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-24 14:50:25.233 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-24 14:50:25.233 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-24 14:53:32.093 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-24 14:53:32.093 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-24 14:53:32.093 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-24 15:05:38.748 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-24 15:05:38.748 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-24 15:05:38.748 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-24 15:10:05.838 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-24 15:10:05.838 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-24 15:28:29.157 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-24 15:28:29.157 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-24 15:28:29.157 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-24 15:41:35.175 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-24 15:41:35.175 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-24 15:41:35.175 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-24 15:47:03.212 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-24 15:47:03.212 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-24 15:47:03.212 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-25 10:26:38.153 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-25 10:26:38.153 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-25 10:26:38.169 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-25 15:36:20.265 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-25 15:36:20.265 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-25 15:36:20.265 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-25 16:39:05.354 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-25 16:39:05.354 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-25 16:39:05.354 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-25 16:40:36.798 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-25 16:40:36.800 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-26 09:33:51.626 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-26 09:33:51.627 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-26 09:33:51.629 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-26 10:33:13.674 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-26 10:33:13.674 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-26 10:33:13.676 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-26 11:11:31.398 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-26 11:11:31.398 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-26 11:11:31.400 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-26 11:36:46.980 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-26 11:36:46.980 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-26 11:36:46.982 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-02-26 11:56:24.711 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
+2026-02-26 11:56:24.711 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
+2026-02-26 11:56:24.713 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
