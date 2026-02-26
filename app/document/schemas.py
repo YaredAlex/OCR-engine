@@ -109,13 +109,12 @@ CONTRACT_SCHEMA = {
   },
 }
 EXPERIENCE_SCHEMA = {
+  "document_type":"",
   "organization": {
     "name": "",
     "address": "",
-    "contact": {
-      "phone": "",
-      "email": ""
-    },
+    "phone": "",
+    "email": "",
     "reference_number": "",
     "issue_date": ""
   },
@@ -126,11 +125,7 @@ EXPERIENCE_SCHEMA = {
     "end_date": "",
     "currently_employed": ""
   },
-  "performance_summary": "",
-  "authorized_signatory": {
-    "name": "",
-    "designation": ""
-  }
+
 }
 
 EDUCATION_SCHEMA = {
