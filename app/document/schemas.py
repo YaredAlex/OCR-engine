@@ -13,15 +13,14 @@ PASSPORT_SCHEMA = {
   "country_code": "",
   "issuing_country": "",
   "full_name": "",
+  "given_names": "//given name(s), surname, name, fullname",
   "surname": "",
-  "given_names": "",
   "date_of_birth": "",
   "gender": "",
   "nationality": "",
   "place_of_birth": "",
   "issue_date": "",
   "expiry_date": "",
-  "place_of_issue": "",
   "mrz_line_1": "",
   "mrz_line_2": ""
 }
