@@ -139,7 +139,7 @@ EDUCATION_SCHEMA = {
 }
 
 CLEARANCE_SCHEMA = {
-  "document_type": "work_permit_cancellation_request",
+  "document_type": "",
   "letter_metadata": {
     "reference_number": "",
     "date": "",
@@ -155,11 +155,6 @@ CLEARANCE_SCHEMA = {
     "address": "",
     "email": ""
   },
-  "request_details": {
-    "request_type": "work_permit_cancellation",
-    "reason": "",
-    "description": ""
-  },
   "employees": [
     {
       "full_name": "",
@@ -171,15 +166,6 @@ CLEARANCE_SCHEMA = {
       "gender": ""
     }
   ],
-  "signatory": {
-    "name": "",
-    "position": "",
-    "department": ""
-  },
-  "additional_information": {
-    "attachments": "",
-    "notes": ""
-  }
 }
 
 DELEGATION_SCHEMA= {
