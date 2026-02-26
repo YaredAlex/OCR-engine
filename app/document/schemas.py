@@ -129,28 +129,13 @@ EXPERIENCE_SCHEMA = {
 }
 
 EDUCATION_SCHEMA = {
+  "document_type":"",
   "institution_name": "",
   "student_name": "",
   "degree": "",
   "degree_classification": "",
   "date_of_award": "",
   "certificate_number": "",
-  "signatories": [
-    {
-      "name": "",
-      "position": ""
-    },
-    {
-      "name": "",
-      "position": ""
-    }
-  ],
-  "document_authentication": {
-    "notary_name": "",
-    "notary_office": "",
-    "authentication_date": "",
-    "seal_verified": "",
-  }
 }
 
 CLEARANCE_SCHEMA = {
