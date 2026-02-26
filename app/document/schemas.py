@@ -127,7 +127,7 @@ CONTRACT_SCHEMA = {
     "contract_signed_date":"" 
   }
 }
-EXPERIANCE_SCHEMA = {
+EXPERIENCE_SCHEMA = {
   "organization": {
     "name": "",
     "address": "",
