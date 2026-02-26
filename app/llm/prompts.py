@@ -3,8 +3,6 @@ from document.schemas import GENERAL_SCHEMA, PERMIT_REQUEST
 
 def extraction_prompt(doc_type: str, text: str, schema: dict) -> str:
     doc_type = doc_type.replace("\n","").lower()
-    if doc_type =="passport" or doc_type=="visa" or doc_type=="national id":
-        return passport_id_prompt(doc_type,text,schema)
     return f"""
 You are an information extraction system.
 
@@ -15,13 +13,6 @@ Document type: {doc_type}
 Extract the information and return STRICT JSON NO ADDITIONAL fields.
 following this schema:
 {schema}
-
-IF Schema is NOT FOUND make appropriate Schema according to extracted text. 
-Example for how to construct schema if not found:
-1. For Work Permit
-{PERMIT_REQUEST}
-2. General perpose
-{GENERAL_SCHEMA}
 
 Return STRICT JSON only.
 - Do NOT add extra fields.
