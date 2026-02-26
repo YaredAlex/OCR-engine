@@ -48,12 +48,12 @@ VISA_SCHEMA = {
 }
 
 SUPPORT_LETTER_SCHEMA = {
+  "document_type":"",
   "letter_reference_number": "",
   "letter_date": "",
   "issuing_organization": "",
   "issuing_department": "",
   "recipient_organization": "",
-  "recipient_location": "",
   "project_title": "",
   "project_reference": "",
   "purpose": "",
@@ -71,8 +71,6 @@ SUPPORT_LETTER_SCHEMA = {
   "signatory_title": "",
   "contact_address": "",
   "contact_phone": "",
-  "contact_website": "",
-  "attachments": ""
 }
 
 CONTRACT_SCHEMA = {
