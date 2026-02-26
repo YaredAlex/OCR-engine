@@ -74,6 +74,7 @@ SUPPORT_LETTER_SCHEMA = {
 }
 
 CONTRACT_SCHEMA = {
+  "document_type":"",
   "contract_type": "",
   "employer": {
     "company_name": "",
@@ -91,7 +92,12 @@ CONTRACT_SCHEMA = {
     "passport_number": "",
     "date_of_birth": ""
   },
-
+  "compensation": {
+    "basic_salary": "",
+    "currency": "",
+    "allowances": "",
+    "payment_frequency": ""
+  },
   "employment_details": {
     "job_title": "",
     "employment_type": "",
@@ -101,27 +107,6 @@ CONTRACT_SCHEMA = {
     "contract_duration":"",
     "probation_period": ""
   },
-
-  "compensation": {
-    "basic_salary": "",
-    "currency": "",
-    "allowances": "",
-    "payment_frequency": ""
-  },
-
-  "termination": {
-    "notice_period": "",
-    "early_termination_conditions": ""
-  },
-
-  "governing_law": "",
-  "jurisdiction":"",
-
-  "signatures": {
-    "employer_signatory": "",
-    "employee_signatory": "",
-    "contract_signed_date":"" 
-  }
 }
 EXPERIENCE_SCHEMA = {
   "organization": {
