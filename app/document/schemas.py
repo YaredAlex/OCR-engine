@@ -26,6 +26,7 @@ PASSPORT_SCHEMA = {
 }
 
 VISA_SCHEMA = {
+  "document_type":"",
   "visa_number": "",
   "visa_type": "",
   "valid_from": "",
@@ -34,15 +35,13 @@ VISA_SCHEMA = {
   "issuing_country": "",
   "place_of_issue": "",
   "issue_date": "",
+  "expiry_date":"",
   "full_name": "",
   "surname": "",
   "given_names": "",
   "sex": "",
   "date_of_birth": "",
   "nationality": "",
-  "passport_number": "",
-  "passport_issue_date": "",
-  "passport_expiry_date": "",
   "reference_code": "",
   "mrz_line_1": "",
   "mrz_line_2": ""
