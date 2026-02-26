@@ -56,7 +56,6 @@ SUPPORT_LETTER_SCHEMA = {
   "recipient_organization": "",
   "project_title": "",
   "project_reference": "",
-  "purpose": "",
   "contracting_company": "",
   "consultant_company": "",
   "employees": [
@@ -67,8 +66,6 @@ SUPPORT_LETTER_SCHEMA = {
       "position": ""
     },
   ],
-  "signatory_name": "",
-  "signatory_title": "",
   "contact_address": "",
   "contact_phone": "",
 }
