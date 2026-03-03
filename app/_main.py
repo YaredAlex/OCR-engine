@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 import shutil
 import uuid
+import time
 try:
     from fastapi import FastAPI, UploadFile, File
     import uvicorn
@@ -76,9 +77,11 @@ def create_api():
             for file,temp_path in zip(files,temp_paths):
                 with open(temp_path, "wb") as buffer:
                         shutil.copyfileobj(file.file, buffer)
-
+            start = time.time()
             result = process_file([file.filename for file in files],temp_paths)
-            print("create api main result ",result)
+            end = time.time()
+            print(f"Time token to process is {end-start:.2f}sec")
+            # print("create api main result ",result)
             # res.data contains extracted and structed info
             for data,file in zip(result['data'],files):
                 results.append({
