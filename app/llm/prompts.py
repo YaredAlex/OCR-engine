@@ -22,7 +22,7 @@ Return STRICT JSON only.
 - Do NOT include markdown formatting.
 - Do NOT include text before or after the JSON.
 - If a field is missing, return an empty string "".
-- Do not start with new line or \n
+- Do NOT start with new line or \n
 - Start with {{}} 
 
 Now extract the information from the following text:
