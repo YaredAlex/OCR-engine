@@ -4,6 +4,7 @@ import json
 import tempfile
 from multiprocessing import Pool
 from typing import List
+from langchain.messages import AIMessage
 from pdf2image import convert_from_path
 from PIL import Image
 from llm.ollam_client import call_llm, ollama_chain
@@ -51,7 +52,7 @@ def process_file(filenames: list[str] = None, single_path: str = None):
     Process a single image or PDF file.
     Works for batch mode and API mode.
     """
-    paths = single_path if single_path else [os.path.join(INPUT_DIR, f) for f in filenames]
+    paths = [single_path] if single_path else [os.path.join(INPUT_DIR, f) for f in filenames]
 
     for p in paths:
         if not os.path.exists(p):
@@ -93,7 +94,8 @@ def process_file(filenames: list[str] = None, single_path: str = None):
     # classify each documents
     # doc_type = classify_document(full_text)
     doc_types:list[str] = classify_documents(list(combined_texts.values()))
-     # the llm some times ends with \n
+    doc_types = [doc if not isinstance(doc,AIMessage) else doc.content for doc in doc_types]
+    # the llm some times ends with \n
     doc_types = [re.sub("\*","",doc_type.replace("\n","")) for doc_type in doc_types]
     print("doctypes is ", doc_types)
     def get_schema(doc_type: str):
@@ -132,6 +134,7 @@ def process_file(filenames: list[str] = None, single_path: str = None):
     output_path = os.path.join(OUTPUT_DIR, output_name)
 
     # removing ```json ``` from the generated text
+    results = [result if not isinstance(result,AIMessage) else result.content for result in results]
     results = [result.replace("```json","").replace("```","") for result in results]
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)

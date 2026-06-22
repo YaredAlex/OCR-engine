@@ -104,3 +104,367 @@
 2026-06-22 12:00:20.177 | WARNING  | __main__:validate_directories:41 - Input directory is empty. Nothing to process.
 2026-06-22 12:00:20.177 | INFO     | __main__:main:150 - Pipeline started in 'api' mode
 2026-06-22 12:00:20.177 | INFO     | __main__:run_api_mode:113 - Starting API server at http://0.0.0.0:8000
+2026-06-22 12:05:15.875 | INFO     | __main__:run_single_document:25 - Processing single document: D:\importantDoc\medium_of_instruction.jpg
+2026-06-22 12:05:15.876 | ERROR    | __main__:run_single_document:31 - Single document processing failed: File not found: D
+Traceback (most recent call last):
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 83, in <module>
+    main()
+    └ <function main at 0x0000019B6512F4C0>
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 73, in main
+    run_single_document(args.file)
+    │                   │    └ 'D:\\importantDoc\\medium_of_instruction.jpg'
+    │                   └ Namespace(mode='single', file='D:\\importantDoc\\medium_of_instruction.jpg')
+    └ <function run_single_document at 0x0000019B0C321E40>
+
+> File "D:\LMIS\OCR-engine\app\main.py", line 28, in run_single_document
+    process_file(os.path.basename(file_path), single_path=file_path)
+    │            │  │    │        │                       └ 'D:\\importantDoc\\medium_of_instruction.jpg'
+    │            │  │    │        └ 'D:\\importantDoc\\medium_of_instruction.jpg'
+    │            │  │    └ <function basename at 0x0000019B0C01CE00>
+    │            │  └ <module 'ntpath' (frozen)>
+    │            └ <module 'os' (frozen)>
+    └ <function process_file at 0x0000019B6512F880>
+
+  File "D:\LMIS\OCR-engine\app\batch_processor.py", line 58, in process_file
+    raise FileNotFoundError(f"File not found: {p}")
+
+FileNotFoundError: File not found: D
+2026-06-22 12:06:49.333 | INFO     | __main__:run_single_document:25 - Processing single document: .\medium_of_instruction.jpg
+2026-06-22 12:06:49.333 | ERROR    | __main__:run_single_document:31 - Single document processing failed: File not found: m
+Traceback (most recent call last):
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 83, in <module>
+    main()
+    └ <function main at 0x0000025B69BAF4C0>
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 73, in main
+    run_single_document(args.file)
+    │                   │    └ '.\\medium_of_instruction.jpg'
+    │                   └ Namespace(mode='single', file='.\\medium_of_instruction.jpg')
+    └ <function run_single_document at 0x0000025B10C81E40>
+
+> File "D:\LMIS\OCR-engine\app\main.py", line 28, in run_single_document
+    process_file(os.path.basename(file_path), single_path=file_path)
+    │            │  │    │        │                       └ '.\\medium_of_instruction.jpg'
+    │            │  │    │        └ '.\\medium_of_instruction.jpg'
+    │            │  │    └ <function basename at 0x0000025B1097CE00>
+    │            │  └ <module 'ntpath' (frozen)>
+    │            └ <module 'os' (frozen)>
+    └ <function process_file at 0x0000025B69BAF880>
+
+  File "D:\LMIS\OCR-engine\app\batch_processor.py", line 58, in process_file
+    raise FileNotFoundError(f"File not found: {p}")
+
+FileNotFoundError: File not found: m
+2026-06-22 12:07:11.662 | INFO     | __main__:run_single_document:25 - Processing single document: medium_of_instruction.jpg
+2026-06-22 12:07:11.662 | ERROR    | __main__:run_single_document:31 - Single document processing failed: File not found: m
+Traceback (most recent call last):
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 83, in <module>
+    main()
+    └ <function main at 0x000002165F3EB4C0>
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 73, in main
+    run_single_document(args.file)
+    │                   │    └ 'medium_of_instruction.jpg'
+    │                   └ Namespace(mode='single', file='medium_of_instruction.jpg')
+    └ <function run_single_document at 0x0000021606601E40>
+
+> File "D:\LMIS\OCR-engine\app\main.py", line 28, in run_single_document
+    process_file(os.path.basename(file_path), single_path=file_path)
+    │            │  │    │        │                       └ 'medium_of_instruction.jpg'
+    │            │  │    │        └ 'medium_of_instruction.jpg'
+    │            │  │    └ <function basename at 0x00000216062FCE00>
+    │            │  └ <module 'ntpath' (frozen)>
+    │            └ <module 'os' (frozen)>
+    └ <function process_file at 0x000002165F3EB880>
+
+  File "D:\LMIS\OCR-engine\app\batch_processor.py", line 58, in process_file
+    raise FileNotFoundError(f"File not found: {p}")
+
+FileNotFoundError: File not found: m
+2026-06-22 12:08:49.269 | ERROR    | __main__:run_single_document:22 - File not found: medium_of_instruction.jpg
+2026-06-22 12:09:15.849 | ERROR    | __main__:run_single_document:22 - File not found: ./medium_of_instruction.jpg
+2026-06-22 12:10:17.234 | ERROR    | __main__:run_single_document:22 - File not found: .\medium_of_instruction.jpg
+2026-06-22 12:13:41.820 | INFO     | __main__:run_single_document:25 - Processing single document: D:\LMIS\OCR-engine\medium_of_instruction.jpg
+2026-06-22 12:13:41.820 | ERROR    | __main__:run_single_document:31 - Single document processing failed: File not found: D
+Traceback (most recent call last):
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 83, in <module>
+    main()
+    └ <function main at 0x00000177775EF4C0>
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 73, in main
+    run_single_document(args.file)
+    │                   │    └ 'D:\\LMIS\\OCR-engine\\medium_of_instruction.jpg'
+    │                   └ Namespace(mode='single', file='D:\\LMIS\\OCR-engine\\medium_of_instruction.jpg')
+    └ <function run_single_document at 0x000001771E791E40>
+
+> File "D:\LMIS\OCR-engine\app\main.py", line 28, in run_single_document
+    process_file(os.path.basename(file_path), single_path=file_path)
+    │            │  │    │        │                       └ 'D:\\LMIS\\OCR-engine\\medium_of_instruction.jpg'
+    │            │  │    │        └ 'D:\\LMIS\\OCR-engine\\medium_of_instruction.jpg'
+    │            │  │    └ <function basename at 0x000001771E48CE00>
+    │            │  └ <module 'ntpath' (frozen)>
+    │            └ <module 'os' (frozen)>
+    └ <function process_file at 0x00000177775EF880>
+
+  File "D:\LMIS\OCR-engine\app\batch_processor.py", line 58, in process_file
+    raise FileNotFoundError(f"File not found: {p}")
+
+FileNotFoundError: File not found: D
+2026-06-22 12:14:59.168 | INFO     | __main__:run_single_document:25 - Processing single document: D:/LMIS/OCR-engine/medium_of_instruction.jpg
+2026-06-22 12:14:59.168 | ERROR    | __main__:run_single_document:31 - Single document processing failed: File not found: D
+Traceback (most recent call last):
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 83, in <module>
+    main()
+    └ <function main at 0x0000024AB910F4C0>
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 73, in main
+    run_single_document(args.file)
+    │                   │    └ 'D:/LMIS/OCR-engine/medium_of_instruction.jpg'
+    │                   └ Namespace(mode='single', file='D:/LMIS/OCR-engine/medium_of_instruction.jpg')
+    └ <function run_single_document at 0x0000024AE01F1E40>
+
+> File "D:\LMIS\OCR-engine\app\main.py", line 28, in run_single_document
+    process_file(os.path.basename(file_path), single_path=file_path)
+    │            │  │    │        │                       └ 'D:/LMIS/OCR-engine/medium_of_instruction.jpg'
+    │            │  │    │        └ 'D:/LMIS/OCR-engine/medium_of_instruction.jpg'
+    │            │  │    └ <function basename at 0x0000024ADFEECE00>
+    │            │  └ <module 'ntpath' (frozen)>
+    │            └ <module 'os' (frozen)>
+    └ <function process_file at 0x0000024AB910F880>
+
+  File "D:\LMIS\OCR-engine\app\batch_processor.py", line 58, in process_file
+    raise FileNotFoundError(f"File not found: {p}")
+
+FileNotFoundError: File not found: D
+2026-06-22 12:15:24.365 | INFO     | __main__:run_single_document:25 - Processing single document: D:\\LMIS\\OCR-engine\\medium_of_instruction.jpg
+2026-06-22 12:15:24.365 | ERROR    | __main__:run_single_document:31 - Single document processing failed: File not found: D
+Traceback (most recent call last):
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 83, in <module>
+    main()
+    └ <function main at 0x000002A9BB44F4C0>
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 73, in main
+    run_single_document(args.file)
+    │                   │    └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │                   └ Namespace(mode='single', file='D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg')
+    └ <function run_single_document at 0x000002A9E24D1E40>
+
+> File "D:\LMIS\OCR-engine\app\main.py", line 28, in run_single_document
+    process_file(os.path.basename(file_path), single_path=file_path)
+    │            │  │    │        │                       └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │            │  │    │        └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │            │  │    └ <function basename at 0x000002A9E21CCE00>
+    │            │  └ <module 'ntpath' (frozen)>
+    │            └ <module 'os' (frozen)>
+    └ <function process_file at 0x000002A9BB44F880>
+
+  File "D:\LMIS\OCR-engine\app\batch_processor.py", line 58, in process_file
+    raise FileNotFoundError(f"File not found: {p}")
+
+FileNotFoundError: File not found: D
+2026-06-22 12:16:36.893 | INFO     | __main__:run_single_document:25 - Processing single document: D:\\LMIS\\OCR-engine\\medium_of_instruction.jpg
+2026-06-22 12:16:36.893 | ERROR    | __main__:run_single_document:31 - Single document processing failed: File not found: D
+Traceback (most recent call last):
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 83, in <module>
+    main()
+    └ <function main at 0x000001F2186274C0>
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 73, in main
+    run_single_document(args.file)
+    │                   │    └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │                   └ Namespace(mode='single', file='D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg')
+    └ <function run_single_document at 0x000001F23F8B1E40>
+
+> File "D:\LMIS\OCR-engine\app\main.py", line 28, in run_single_document
+    process_file(os.path.basename(file_path), single_path=file_path)
+    │            │  │    │        │                       └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │            │  │    │        └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │            │  │    └ <function basename at 0x000001F23F5ACE00>
+    │            │  └ <module 'ntpath' (frozen)>
+    │            └ <module 'os' (frozen)>
+    └ <function process_file at 0x000001F218627880>
+
+  File "D:\LMIS\OCR-engine\app\batch_processor.py", line 60, in process_file
+    raise FileNotFoundError(f"File not found: {p}")
+
+FileNotFoundError: File not found: D
+2026-06-22 12:17:26.459 | INFO     | __main__:run_single_document:25 - Processing single document: D:\\LMIS\\OCR-engine\\medium_of_instruction.jpg
+2026-06-22 12:17:26.459 | ERROR    | __main__:run_single_document:31 - Single document processing failed: File not found: D
+Traceback (most recent call last):
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 83, in <module>
+    main()
+    └ <function main at 0x000001873EF0B4C0>
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 73, in main
+    run_single_document(args.file)
+    │                   │    └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │                   └ Namespace(mode='single', file='D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg')
+    └ <function run_single_document at 0x0000018765E31E40>
+
+> File "D:\LMIS\OCR-engine\app\main.py", line 28, in run_single_document
+    process_file(os.path.basename(file_path), single_path=file_path)
+    │            │  │    │        │                       └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │            │  │    │        └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │            │  │    └ <function basename at 0x0000018765B2CE00>
+    │            │  └ <module 'ntpath' (frozen)>
+    │            └ <module 'os' (frozen)>
+    └ <function process_file at 0x000001873EF0B880>
+
+  File "D:\LMIS\OCR-engine\app\batch_processor.py", line 59, in process_file
+    raise FileNotFoundError(f"File not found: {p}")
+
+FileNotFoundError: File not found: D
+2026-06-22 12:17:49.798 | INFO     | __main__:run_single_document:25 - Processing single document: D:\\LMIS\\OCR-engine\\medium_of_instruction.jpg
+2026-06-22 12:17:49.798 | ERROR    | __main__:run_single_document:31 - Single document processing failed: File not found: D
+Traceback (most recent call last):
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 83, in <module>
+    main()
+    └ <function main at 0x00000215081CB4C0>
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 73, in main
+    run_single_document(args.file)
+    │                   │    └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │                   └ Namespace(mode='single', file='D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg')
+    └ <function run_single_document at 0x000002152F161E40>
+
+> File "D:\LMIS\OCR-engine\app\main.py", line 28, in run_single_document
+    process_file(os.path.basename(file_path), single_path=file_path)
+    │            │  │    │        │                       └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │            │  │    │        └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │            │  │    └ <function basename at 0x000002152EE5CE00>
+    │            │  └ <module 'ntpath' (frozen)>
+    │            └ <module 'os' (frozen)>
+    └ <function process_file at 0x00000215081CB880>
+
+  File "D:\LMIS\OCR-engine\app\batch_processor.py", line 60, in process_file
+    raise FileNotFoundError(f"File not found: {p}")
+
+FileNotFoundError: File not found: D
+2026-06-22 12:18:39.942 | INFO     | __main__:run_single_document:25 - Processing single document: D:\\LMIS\\OCR-engine\\medium_of_instruction.jpg
+2026-06-22 12:20:40.333 | ERROR    | __main__:run_single_document:31 - Single document processing failed: 'AIMessage' object has no attribute 'replace'
+Traceback (most recent call last):
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 83, in <module>
+    main()
+    └ <function main at 0x0000022A5760B4C0>
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 73, in main
+    run_single_document(args.file)
+    │                   │    └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │                   └ Namespace(mode='single', file='D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg')
+    └ <function run_single_document at 0x0000022A7E7A1E40>
+
+> File "D:\LMIS\OCR-engine\app\main.py", line 28, in run_single_document
+    process_file(os.path.basename(file_path), single_path=file_path)
+    │            │  │    │        │                       └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │            │  │    │        └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │            │  │    └ <function basename at 0x0000022A7E49CE00>
+    │            │  └ <module 'ntpath' (frozen)>
+    │            └ <module 'os' (frozen)>
+    └ <function process_file at 0x0000022A5760B880>
+
+  File "D:\LMIS\OCR-engine\app\batch_processor.py", line 97, in process_file
+    doc_types = [re.sub("\*","",doc_type.replace("\n","")) for doc_type in doc_types]
+                 │  │                                                      └ [AIMessage(content='Education Certificate', additional_kwargs={'refusal': None}, response_metadata={'token_usage': {'completi...
+                 │  └ <function sub at 0x0000022A7E578680>
+                 └ <module 're' from 'C:\\Users\\Yared\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\re\\__init__.py'>
+
+  File "D:\LMIS\OCR-engine\app\batch_processor.py", line 97, in <listcomp>
+    doc_types = [re.sub("\*","",doc_type.replace("\n","")) for doc_type in doc_types]
+                 │  │           │                              └ AIMessage(content='Education Certificate', additional_kwargs={'refusal': None}, response_metadata={'token_usage': {'completio...
+                 │  │           └ AIMessage(content='Education Certificate', additional_kwargs={'refusal': None}, response_metadata={'token_usage': {'completio...
+                 │  └ <function sub at 0x0000022A7E578680>
+                 └ <module 're' from 'C:\\Users\\Yared\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\re\\__init__.py'>
+
+  File "D:\LMIS\OCR-engine\env\Lib\site-packages\pydantic\main.py", line 1042, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+
+AttributeError: 'AIMessage' object has no attribute 'replace'
+2026-06-22 12:22:11.626 | INFO     | __main__:run_single_document:25 - Processing single document: D:\\LMIS\\OCR-engine\\medium_of_instruction.jpg
+2026-06-22 12:22:19.764 | ERROR    | __main__:run_single_document:31 - Single document processing failed: 'AIMessage' object has no attribute 'replace'
+Traceback (most recent call last):
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 83, in <module>
+    main()
+    └ <function main at 0x000001A60D88B4C0>
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 73, in main
+    run_single_document(args.file)
+    │                   │    └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │                   └ Namespace(mode='single', file='D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg')
+    └ <function run_single_document at 0x000001A634961E40>
+
+> File "D:\LMIS\OCR-engine\app\main.py", line 28, in run_single_document
+    process_file(os.path.basename(file_path), single_path=file_path)
+    │            │  │    │        │                       └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │            │  │    │        └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │            │  │    └ <function basename at 0x000001A63465CE00>
+    │            │  └ <module 'ntpath' (frozen)>
+    │            └ <module 'os' (frozen)>
+    └ <function process_file at 0x000001A60D88B880>
+
+  File "D:\LMIS\OCR-engine\app\batch_processor.py", line 98, in process_file
+    doc_types = [re.sub("\*","",doc_type.replace("\n","")) for doc_type in doc_types]
+                 │  │                                                      └ [AIMessage(content='Education Certificate', additional_kwargs={'refusal': None}, response_metadata={'token_usage': {'completi...
+                 │  └ <function sub at 0x000001A634738680>
+                 └ <module 're' from 'C:\\Users\\Yared\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\re\\__init__.py'>
+
+  File "D:\LMIS\OCR-engine\app\batch_processor.py", line 98, in <listcomp>
+    doc_types = [re.sub("\*","",doc_type.replace("\n","")) for doc_type in doc_types]
+                 │  │           │                              └ AIMessage(content='Education Certificate', additional_kwargs={'refusal': None}, response_metadata={'token_usage': {'completio...
+                 │  │           └ AIMessage(content='Education Certificate', additional_kwargs={'refusal': None}, response_metadata={'token_usage': {'completio...
+                 │  └ <function sub at 0x000001A634738680>
+                 └ <module 're' from 'C:\\Users\\Yared\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\re\\__init__.py'>
+
+  File "D:\LMIS\OCR-engine\env\Lib\site-packages\pydantic\main.py", line 1042, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+
+AttributeError: 'AIMessage' object has no attribute 'replace'
+2026-06-22 12:25:18.805 | INFO     | __main__:run_single_document:25 - Processing single document: D:\\LMIS\\OCR-engine\\medium_of_instruction.jpg
+2026-06-22 12:25:27.908 | ERROR    | __main__:run_single_document:31 - Single document processing failed: 'AIMessage' object has no attribute 'replace'
+Traceback (most recent call last):
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 83, in <module>
+    main()
+    └ <function main at 0x00000237D081F4C0>
+
+  File "D:\LMIS\OCR-engine\app\main.py", line 73, in main
+    run_single_document(args.file)
+    │                   │    └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │                   └ Namespace(mode='single', file='D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg')
+    └ <function run_single_document at 0x00000237F77E1E40>
+
+> File "D:\LMIS\OCR-engine\app\main.py", line 28, in run_single_document
+    process_file(os.path.basename(file_path), single_path=file_path)
+    │            │  │    │        │                       └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │            │  │    │        └ 'D:\\\\LMIS\\\\OCR-engine\\\\medium_of_instruction.jpg'
+    │            │  │    └ <function basename at 0x00000237F74DCE00>
+    │            │  └ <module 'ntpath' (frozen)>
+    │            └ <module 'os' (frozen)>
+    └ <function process_file at 0x00000237D081F880>
+
+  File "D:\LMIS\OCR-engine\app\batch_processor.py", line 138, in process_file
+    results = [result.replace("```json","").replace("```","") for result in results]
+                                                                            └ [AIMessage(content='{\n"document_type": "education certificate",\n"institution_name": "Chandigarh University",\n"student_name...
+
+  File "D:\LMIS\OCR-engine\app\batch_processor.py", line 138, in <listcomp>
+    results = [result.replace("```json","").replace("```","") for result in results]
+               │                                                  └ AIMessage(content='{\n"document_type": "education certificate",\n"institution_name": "Chandigarh University",\n"student_name"...
+               └ AIMessage(content='{\n"document_type": "education certificate",\n"institution_name": "Chandigarh University",\n"student_name"...
+
+  File "D:\LMIS\OCR-engine\env\Lib\site-packages\pydantic\main.py", line 1042, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+
+AttributeError: 'AIMessage' object has no attribute 'replace'
+2026-06-22 12:27:13.624 | INFO     | __main__:run_single_document:25 - Processing single document: D:\\LMIS\\OCR-engine\\medium_of_instruction.jpg
+2026-06-22 12:27:23.442 | SUCCESS  | __main__:run_single_document:29 - Single document processed successfully
