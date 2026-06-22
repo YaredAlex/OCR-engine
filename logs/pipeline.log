@@ -98,3 +98,9 @@
 2026-02-26 11:56:24.711 | WARNING  | __main__:validate_directories:40 - Input directory is empty. Nothing to process.
 2026-02-26 11:56:24.711 | INFO     | __main__:main:147 - Pipeline started in 'api' mode
 2026-02-26 11:56:24.713 | INFO     | __main__:run_api_mode:110 - Starting API server at http://0.0.0.0:8000
+2026-06-22 11:59:04.934 | WARNING  | __main__:validate_directories:41 - Input directory is empty. Nothing to process.
+2026-06-22 11:59:04.934 | INFO     | __main__:main:150 - Pipeline started in 'api' mode
+2026-06-22 11:59:04.950 | INFO     | __main__:run_api_mode:113 - Starting API server at http://0.0.0.0:8000
+2026-06-22 12:00:20.177 | WARNING  | __main__:validate_directories:41 - Input directory is empty. Nothing to process.
+2026-06-22 12:00:20.177 | INFO     | __main__:main:150 - Pipeline started in 'api' mode
+2026-06-22 12:00:20.177 | INFO     | __main__:run_api_mode:113 - Starting API server at http://0.0.0.0:8000
